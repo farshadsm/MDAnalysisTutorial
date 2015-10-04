@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Writing coordinates &mdash; MDAnalysis Tutorial 0.1.1 documentation</title>
+    <title>Writing coordinates &mdash; MDAnalysis Tutorial 1.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.1',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
-    <link rel="top" title="MDAnalysis Tutorial 0.1.1 documentation" href="index.html" />
+    <link rel="top" title="MDAnalysis Tutorial 1.0.0 documentation" href="index.html" />
     <link rel="next" title="Using the MDAnalysis.analysis modules" href="analysismodule.html" />
     <link rel="prev" title="Trajectory analysis" href="trajectories.html" /> 
   </head>
@@ -42,7 +42,7 @@
         <li class="right" >
           <a href="trajectories.html" title="Trajectory analysis"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">MDAnalysis Tutorial 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MDAnalysis Tutorial 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -111,7 +111,7 @@ single frame is to use the
 <a class="reference internal" href="atomgroups.html#processing-atomgroups"><em>Processing AtomGroups</em></a>. For instance, to only write out the
 protein without solvent to a file in GRO format:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PDB</span><span class="p">)</span>
-<span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;protein&quot;</span><span class="p">)</span>
+<span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;protein&quot;</span><span class="p">)</span>
 <span class="n">protein</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;protein.gro&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -131,7 +131,7 @@ write a new time step to the trajectory.</li>
 <li>Close the trajectory with
 <tt class="xref py py-meth docutils literal"><span class="pre">close()</span></tt> (although it is
 recommended to simply use the writer with the <a class="reference external" href="http://docs.python.org/reference/compound_stmts.html#with" title="(in Python v2.7)"><tt class="xref std std-keyword docutils literal"><span class="pre">with</span></tt></a>
-statement and have the context handler close the file automatically).</li>
+statement and have the context manager close the file automatically).</li>
 </ol>
 <div class="section" id="example-protein-only-trajectory">
 <h3>Example: Protein-only trajectory<a class="headerlink" href="#example-protein-only-trajectory" title="Permalink to this headline">¶</a></h3>
@@ -141,8 +141,8 @@ example below:</p>
 <span class="kn">from</span> <span class="nn">MDAnalysis.tests.datafiles</span> <span class="kn">import</span> <span class="n">PDB</span><span class="p">,</span> <span class="n">XTC</span>
 
 <span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PDB</span><span class="p">,</span> <span class="n">XTC</span><span class="p">)</span>
-<span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;protein&quot;</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;protein.xtc&quot;</span><span class="p">,</span> <span class="n">protein</span><span class="o">.</span><span class="n">numberOfAtoms</span><span class="p">())</span> <span class="k">as</span> <span class="n">W</span><span class="p">:</span>
+<span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;protein&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;protein.xtc&quot;</span><span class="p">,</span> <span class="n">protein</span><span class="o">.</span><span class="n">n_atoms</span><span class="p">)</span> <span class="k">as</span> <span class="n">W</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
         <span class="n">W</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">protein</span><span class="p">)</span>
 </pre></div>
@@ -215,7 +215,7 @@ out as part of a multi-frame PDB file:</p>
 <span class="n">CORE_selection</span> <span class="o">=</span> <span class="s">&quot;resid 1:29 or resid 60:121 or resid 160:214&quot;</span>
 <span class="n">pdbtrj</span> <span class="o">=</span> <span class="s">&quot;adk_distance_bfac.pdb&quot;</span>
 
-<span class="k">with</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">pdbtrj</span><span class="p">,</span> <span class="n">multiframe</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">bonds</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">numatoms</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">numberOfAtoms</span><span class="p">())</span> <span class="k">as</span> <span class="n">PDB</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">pdbtrj</span><span class="p">,</span> <span class="n">multiframe</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">bonds</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">n_atoms</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">n_atoms</span><span class="p">)</span> <span class="k">as</span> <span class="n">PDB</span><span class="p">:</span>
     <span class="c"># reference coordinates: set to first frame</span>
     <span class="n">ref</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c"># iterate through our trajectory</span>
@@ -224,7 +224,7 @@ out as part of a multi-frame PDB file:</p>
 <span class="hll">        <span class="n">rmsd</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">align</span><span class="o">.</span><span class="n">alignto</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">,</span> <span class="n">ref</span><span class="o">.</span><span class="n">atoms</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="n">CORE_selection</span><span class="p">)</span>
 </span><span class="hll">        <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">positions</span> <span class="o">-</span> <span class="n">ref</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">positions</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </span>        <span class="c"># project displacement on structure via bfactor field</span>
-<span class="hll">        <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">set_bfactor</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+<span class="hll">        <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">set_bfactors</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
 </span><span class="hll">        <span class="n">PDB</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span>
 </span>        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Frame {0}: CORE RMSD before/after superposition: {1[0]:.1f} / {1[1]:.1f} A. &quot;</span>
               <span class="s">&quot;min-max displacement: {2:.1f}...{3:.1f} A&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">rmsd</span><span class="p">,</span> <span class="n">distances</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">distances</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
@@ -342,7 +342,7 @@ slightly modified for this tutorial:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">We could have also directly loaded the scalar data into the
 <tt class="docutils literal"><span class="pre">User</span></tt> field in <a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/">VMD</a>; this is demonstrated in
-<a class="reference external" href="https://github.com/orbeckst/MDAnalysisTutorial/blob/master/doc/sphinx/code/vmduser.py">vmduser.py</a>.</p>
+<a class="reference external" href="https://github.com/MDAnalysis/MDAnalysisTutorial/blob/master/doc/sphinx/code/vmduser.py">vmduser.py</a>.</p>
 </div>
 </div>
 </div>
@@ -366,11 +366,11 @@ slightly modified for this tutorial:</p>
         <li class="right" >
           <a href="trajectories.html" title="Trajectory analysis"
              >previous</a> |</li>
-        <li><a href="index.html">MDAnalysis Tutorial 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MDAnalysis Tutorial 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, Oliver Beckstein.
+        &copy; Copyright 2015, Oliver Beckstein.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>

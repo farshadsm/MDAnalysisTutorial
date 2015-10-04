@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Basics &mdash; MDAnalysis Tutorial 0.1.1 documentation</title>
+    <title>Basics &mdash; MDAnalysis Tutorial 1.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.1',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
-    <link rel="top" title="MDAnalysis Tutorial 0.1.1 documentation" href="index.html" />
+    <link rel="top" title="MDAnalysis Tutorial 1.0.0 documentation" href="index.html" />
     <link rel="next" title="Working with AtomGroups" href="atomgroups.html" />
     <link rel="prev" title="Preparations" href="preparations.html" /> 
   </head>
@@ -42,7 +42,7 @@
         <li class="right" >
           <a href="preparations.html" title="Preparations"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">MDAnalysis Tutorial 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MDAnalysis Tutorial 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -98,7 +98,7 @@
           <div class="body">
             
   <div class="section" id="basics">
-<h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
+<span id="chapter-basics"></span><h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
 <p>We discuss the fundamental objects in MDAnalysis, the
 <a class="reference internal" href="#universe-and-atomgroup"><em>Universe and AtomGroup</em></a>, and the facilities for
 <a class="reference internal" href="#selections"><em>Selections</em></a> of atoms. These selections themselves are again an
@@ -188,7 +188,7 @@ slice of atoms.</p>
 <li><p class="first">How many residues are in the
 <tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt> <tt class="docutils literal"><span class="pre">u</span></tt>?</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">residues</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">numberOfResidues</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">n_residues</span>
 <span class="go">214</span>
 </pre></div>
 </div>
@@ -196,8 +196,8 @@ slice of atoms.</p>
 <span class="pre">&quot;Gly&quot;,</span> <span class="pre">&quot;Gly&quot;,</span> <span class="pre">&quot;Asp&quot;,</span> <span class="pre">...]</span></tt>) and residue numbers (&#8220;resid&#8221;) for
 atoms 1000 to 1300? And as a list of tuples <tt class="docutils literal"><span class="pre">(resname,</span> <span class="pre">resid)</span></tt>
 (Hint: <a class="reference external" href="http://docs.python.org/library/functions.html#zip" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">zip()</span></tt></a>)?:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resnames</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="mi">999</span><span class="p">:</span><span class="mi">1300</span><span class="p">]</span><span class="o">.</span><span class="n">resnames</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">resids</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="mi">999</span><span class="p">:</span><span class="mi">1300</span><span class="p">]</span><span class="o">.</span><span class="n">resids</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resnames</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="mi">999</span><span class="p">:</span><span class="mi">1300</span><span class="p">]</span><span class="o">.</span><span class="n">residues</span><span class="o">.</span><span class="n">resnames</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resids</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="mi">999</span><span class="p">:</span><span class="mi">1300</span><span class="p">]</span><span class="o">.</span><span class="n">residues</span><span class="o">.</span><span class="n">resids</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">zip</span><span class="p">(</span><span class="n">resnames</span><span class="p">,</span> <span class="n">resids</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -213,7 +213,7 @@ object interactively with <tt class="kbd docutils literal"><span class="pre">TAB
 <li><p class="first">How many segments are there?</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">segments</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">segments</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">numberOfSegments</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">n_segments</span>
 <span class="go">1</span>
 </pre></div>
 </div>
@@ -244,16 +244,16 @@ object interactively with <tt class="kbd docutils literal"><span class="pre">TAB
 <span id="id2"></span><h2>Selections<a class="headerlink" href="#selections" title="Permalink to this headline">¶</a></h2>
 <p>MDAnalysis comes with a fairly complete <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/selections.html">atom selection</a>
 facility. Primarily, one uses the method
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe.selectAtoms" title="(in MDAnalysis v0.11)"><tt class="xref py py-meth docutils literal"><span class="pre">selectAtoms()</span></tt></a> of a
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe.select_atoms" title="(in MDAnalysis v0.11)"><tt class="xref py py-meth docutils literal"><span class="pre">select_atoms()</span></tt></a> of a
 <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;protein and name CA&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;protein and name CA&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">AtomGroup</span> <span class="k">with</span> <span class="mi">214</span> <span class="n">atoms</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>but really any <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> has a
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.selectAtoms" title="(in MDAnalysis v0.11)"><tt class="xref py py-meth docutils literal"><span class="pre">selectAtoms()</span></tt></a> method:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">acidic</span> <span class="o">=</span> <span class="n">CA</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;resname ASP or resname GLU&quot;</span><span class="p">)</span>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.select_atoms" title="(in MDAnalysis v0.11)"><tt class="xref py py-meth docutils literal"><span class="pre">select_atoms()</span></tt></a> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">acidic</span> <span class="o">=</span> <span class="n">CA</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;resname ASP or resname GLU&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">acidic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">AtomGroup</span> <span class="k">with</span> <span class="mi">35</span> <span class="n">atoms</span><span class="o">&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">acidic</span><span class="o">.</span><span class="n">residues</span>
@@ -267,7 +267,7 @@ facility. Primarily, one uses the method
 <p>Selections can be combined with boolean expression and it is also
 possible to select by geometric criteria, e.g. with the <tt class="samp docutils literal"><span class="pre">around</span>
 <em><span class="pre">distance</span></em> <em><span class="pre">selection</span></em></tt> keyword:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;((resname ASP or resname GLU) and not (backbone or name CB or name CG)) </span><span class="se">\</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;((resname ASP or resname GLU) and not (backbone or name CB or name CG)) </span><span class="se">\</span>
 <span class="s">                 and around 4.0 ((resname LYS or resname ARG) </span><span class="se">\</span>
 <span class="s">                                  and not (backbone or name CB or name CG))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">residues</span>
 </pre></div>
@@ -282,13 +282,13 @@ selection. Compare the result to what you get by slicing the
 <tt class="xref py py-attr docutils literal"><span class="pre">u.atoms.residues</span></tt> appropriately.</p>
 <p>Which approach would you prefer to use in a analysis script?</p>
 <p>Solution:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;resid 100-200&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;resid 100-200&quot;</span><span class="p">)</span>
 <span class="go">&lt;AtomGroup with 1609 atoms&gt;</span>
 </pre></div>
 </div>
 <p>Compare to the slicing solution (doing an element-wise comparison,
 i.e. residue by residue in each <tt class="xref py py-func docutils literal"><span class="pre">list()</span></tt>):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;resid 100-200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">residues</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">residues</span><span class="p">[</span><span class="mi">99</span><span class="p">:</span><span class="mi">200</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;resid 100-200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">residues</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">residues</span><span class="p">[</span><span class="mi">99</span><span class="p">:</span><span class="mi">200</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>If one wants to get specific residues in scripts one typically uses
@@ -301,14 +301,14 @@ slice 99:200 would give you residues 100-149 and <em>161-209</em>.</p>
 <li><p class="first">Select all residues that do not contain a <span class="math">\(\mathrm{C}_\beta\)</span>
 (&#8220;CB&#8221;) atom. How many are there? What residue names did you find?</p>
 <p>Solution:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sel</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;(byres name CA) and not (byres name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">residues</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sel</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;(byres name CA) and not (byres name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">residues</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
 <span class="go">20</span>
 </pre></div>
 </div>
 <p>These are all Glycines, as can be seen by comparing the residue
 groups element-wise:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">glycines</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;resname GLY&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">glycines</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s">&quot;resname GLY&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">glycines</span><span class="o">.</span><span class="n">residues</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
@@ -337,11 +337,11 @@ groups element-wise:</p>
         <li class="right" >
           <a href="preparations.html" title="Preparations"
              >previous</a> |</li>
-        <li><a href="index.html">MDAnalysis Tutorial 0.1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">MDAnalysis Tutorial 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, Oliver Beckstein.
+        &copy; Copyright 2015, Oliver Beckstein.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
