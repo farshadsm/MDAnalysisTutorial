@@ -102,18 +102,18 @@
 <p>We discuss the fundamental objects in MDAnalysis, the
 <a class="reference internal" href="#universe-and-atomgroup"><em>Universe and AtomGroup</em></a>, and the facilities for
 <a class="reference internal" href="#selections"><em>Selections</em></a> of atoms. These selections themselves are again an
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a>.</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a>.</p>
 <div class="section" id="universe-and-atomgroup">
 <span id="id1"></span><h2>Universe and AtomGroup<a class="headerlink" href="#universe-and-atomgroup" title="Permalink to this headline">¶</a></h2>
 <p>MDAnalysis is <strong>object oriented</strong>. Molecular systems consist of
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Atom</span></tt></a> objects (instances of the
-class <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">MDAnalysis.core.AtomGroup.Atom</span></tt></a>), which are grouped in
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> instances. You build the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> of your system by
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Atom</span></tt></a> objects (instances of the
+class <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">MDAnalysis.core.AtomGroup.Atom</span></tt></a>), which are grouped in
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> instances. You build the
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> of your system by
 loading a <strong>topology</strong> (list of atoms and possibly their connectivity)
 together with a <strong>trajectory</strong> (coordinate information) into the
 central data structure, the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt></a> object:</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt></a> object:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 <span class="go">&lt;Universe with 3341 atoms&gt;</span>
@@ -121,7 +121,7 @@ central data structure, the
 </div>
 <p>The atoms are stored in the attribute
 <tt class="xref py py-attr docutils literal"><span class="pre">atoms</span></tt> of the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">MDAnalysis.core.AtomGroup.Universe</span></tt></a>:</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">MDAnalysis.core.AtomGroup.Universe</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span>
 <span class="go">&lt;AtomGroup with 3341 atoms&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -132,35 +132,35 @@ central data structure, the
 <span class="go"> &lt; Atom 5: name &#39;CA&#39; of type &#39;22&#39; of resname &#39;MET&#39;, resid 1 and segid &#39;4AKE&#39;&gt;]</span>
 </pre></div>
 </div>
-<p>Any <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> knows the residues
+<p>Any <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> knows the residues
 that the atoms belong to via the attribute
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.residues" title="(in MDAnalysis v0.8)"><tt class="xref py py-attr docutils literal"><span class="pre">residues</span></tt></a>, which produces a
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a>. A
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a> acts like a list of
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a> objects:</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.residues" title="(in MDAnalysis v0.11)"><tt class="xref py py-attr docutils literal"><span class="pre">residues</span></tt></a>, which produces a
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a>. A
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a> acts like a list of
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a> objects:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">130</span><span class="p">]</span><span class="o">.</span><span class="n">residues</span>
 <span class="go">&lt;ResidueGroup [&lt;Residue &#39;LEU&#39;, 6&gt;, &lt;Residue &#39;GLY&#39;, 7&gt;, &lt;Residue &#39;ALA&#39;, 8&gt;]&gt;</span>
 </pre></div>
 </div>
 <p>Larger organizational units are
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Segment" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Segment</span></tt></a> instances, for example one
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Segment" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Segment</span></tt></a> instances, for example one
 protein or all the solvent molecules or simply the whole
-system. <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Atom</span></tt></a>,
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a>,
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a>, and
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a> have an
-attribute <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.segments" title="(in MDAnalysis v0.8)"><tt class="xref py py-attr docutils literal"><span class="pre">segments</span></tt></a> that
+system. <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Atom</span></tt></a>,
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a>,
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a>, and
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a> have an
+attribute <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.segments" title="(in MDAnalysis v0.11)"><tt class="xref py py-attr docutils literal"><span class="pre">segments</span></tt></a> that
 will list the segment IDs (&#8220;segids&#8221;) as a
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.SegmentGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">SegmentGroup</span></tt></a>:</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.SegmentGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">SegmentGroup</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">segments</span>
 <span class="go">&lt;SegmentGroup [&lt;Segment &#39;4AKE&#39;&gt;]&gt;</span>
 </pre></div>
 </div>
 <p>The converse is also true: each &#8220;higher&#8221; level in the hierarchy also
-know about the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a> and
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Atom</span></tt></a> instances it contains. For
+know about the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a> and
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Atom" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Atom</span></tt></a> instances it contains. For
 example, to list the atoms of the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a> we had before:</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a> we had before:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">130</span><span class="p">]</span><span class="o">.</span><span class="n">residues</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">atoms</span>
 <span class="go">&lt;AtomGroup with 36 atoms&gt;</span>
@@ -202,7 +202,7 @@ atoms 1000 to 1300? And as a list of tuples <tt class="docutils literal"><span c
 </pre></div>
 </div>
 <p>How do you obtain the resid and the resname for the 100th residue?
-(Hint: investigate the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a>
+(Hint: investigate the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Residue" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Residue</span></tt></a>
 object interactively with <tt class="kbd docutils literal"><span class="pre">TAB</span></tt> completion)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r100</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">residues</span><span class="p">[</span><span class="mi">99</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">r100</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">r100</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -218,7 +218,7 @@ object interactively with <tt class="kbd docutils literal"><span class="pre">TAB
 </pre></div>
 </div>
 <p>What is the segment identifier of the first
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Segment" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Segment</span></tt></a>?</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Segment" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Segment</span></tt></a>?</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span><span class="o">.</span><span class="n">id</span>
 <span class="go">&#39;4AKE&#39;</span>
@@ -228,14 +228,14 @@ object interactively with <tt class="kbd docutils literal"><span class="pre">TAB
 </ol>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p>Methods of <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a>,
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a>, and
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.SegmentGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">SegmentGroup</span></tt></a></p>
+<p>Methods of <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a>,
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.ResidueGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">ResidueGroup</span></tt></a>, and
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.SegmentGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">SegmentGroup</span></tt></a></p>
 <ul class="last simple">
-<li><a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.numberOfResidues" title="(in MDAnalysis v0.8)"><tt class="xref py py-meth docutils literal"><span class="pre">numberOfResidues()</span></tt></a> and
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.numberOfAtoms" title="(in MDAnalysis v0.8)"><tt class="xref py py-meth docutils literal"><span class="pre">numberOfAtoms()</span></tt></a></li>
-<li><a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.resids" title="(in MDAnalysis v0.8)"><tt class="xref py py-meth docutils literal"><span class="pre">resids()</span></tt></a></li>
-<li><a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.resnames" title="(in MDAnalysis v0.8)"><tt class="xref py py-meth docutils literal"><span class="pre">resnames()</span></tt></a></li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">numberOfResidues()</span></tt> and
+<tt class="xref py py-meth docutils literal"><span class="pre">numberOfAtoms()</span></tt></li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">resids()</span></tt></li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">resnames()</span></tt></li>
 </ul>
 </div>
 </div>
@@ -244,15 +244,15 @@ object interactively with <tt class="kbd docutils literal"><span class="pre">TAB
 <span id="id2"></span><h2>Selections<a class="headerlink" href="#selections" title="Permalink to this headline">¶</a></h2>
 <p>MDAnalysis comes with a fairly complete <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/selections.html">atom selection</a>
 facility. Primarily, one uses the method
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe.selectAtoms" title="(in MDAnalysis v0.8)"><tt class="xref py py-meth docutils literal"><span class="pre">selectAtoms()</span></tt></a> of a
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt></a>:</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe.selectAtoms" title="(in MDAnalysis v0.11)"><tt class="xref py py-meth docutils literal"><span class="pre">selectAtoms()</span></tt></a> of a
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;protein and name CA&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">AtomGroup</span> <span class="k">with</span> <span class="mi">214</span> <span class="n">atoms</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>but really any <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> has a
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.selectAtoms" title="(in MDAnalysis v0.8)"><tt class="xref py py-meth docutils literal"><span class="pre">selectAtoms()</span></tt></a> method:</p>
+<p>but really any <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt></a> has a
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.selectAtoms" title="(in MDAnalysis v0.11)"><tt class="xref py py-meth docutils literal"><span class="pre">selectAtoms()</span></tt></a> method:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">acidic</span> <span class="o">=</span> <span class="n">CA</span><span class="o">.</span><span class="n">selectAtoms</span><span class="p">(</span><span class="s">&quot;resname ASP or resname GLU&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">acidic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">AtomGroup</span> <span class="k">with</span> <span class="mi">35</span> <span class="n">atoms</span><span class="o">&gt;</span>

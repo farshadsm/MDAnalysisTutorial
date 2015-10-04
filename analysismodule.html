@@ -92,8 +92,8 @@
 <a class="reference external" href="https://code.google.com/p/mdanalysis/wiki/Examples">Examples</a> on the MDAnalysis wiki).</p>
 <div class="section" id="rmsd">
 <h2>RMSD<a class="headerlink" href="#rmsd" title="Permalink to this headline">¶</a></h2>
-<p>As an example we will use the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/rms.html#MDAnalysis.analysis.rms.rmsd" title="(in MDAnalysis v0.8)"><tt class="xref py py-func docutils literal"><span class="pre">MDAnalysis.analysis.rms.rmsd()</span></tt></a>
-function from the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/rms.html#module-MDAnalysis.analysis.rms" title="(in MDAnalysis v0.8)"><tt class="xref py py-mod docutils literal"><span class="pre">MDAnalysis.analysis.rms</span></tt></a> module. It computes
+<p>As an example we will use the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/rms.html#MDAnalysis.analysis.rms.rmsd" title="(in MDAnalysis v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">MDAnalysis.analysis.rms.rmsd()</span></tt></a>
+function from the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/rms.html#module-MDAnalysis.analysis.rms" title="(in MDAnalysis v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">MDAnalysis.analysis.rms</span></tt></a> module. It computes
 the coordinate root mean square distance between two sets of
 coordinates. For example for the AdK trajectory the backbone RMSD
 between first and last frame is</p>
@@ -111,7 +111,7 @@ between first and last frame is</p>
 <div class="section" id="superposition-of-structure">
 <h2>Superposition of structure<a class="headerlink" href="#superposition-of-structure" title="Permalink to this headline">¶</a></h2>
 <p>In order to superimpose two structures in a way that minimizes the
-RMSD we have functions in the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#module-MDAnalysis.analysis.align" title="(in MDAnalysis v0.8)"><tt class="xref py py-mod docutils literal"><span class="pre">MDAnalysis.analysis.align</span></tt></a> module.</p>
+RMSD we have functions in the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#module-MDAnalysis.analysis.align" title="(in MDAnalysis v0.11)"><tt class="xref py py-mod docutils literal"><span class="pre">MDAnalysis.analysis.align</span></tt></a> module.</p>
 <p>The example uses files provided as part of the MDAnalysis test suite
 (in the variables <tt class="xref py py-data docutils literal"><span class="pre">PSF</span></tt>,
 <tt class="xref py py-data docutils literal"><span class="pre">DCD</span></tt>, and
@@ -123,7 +123,7 @@ examples execute first</p>
 </pre></div>
 </div>
 <p>In the simplest case, we can simply calculate the C-alpha RMSD between
-two structures, using <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/rms.html#MDAnalysis.analysis.rms.rmsd" title="(in MDAnalysis v0.8)"><tt class="xref py py-func docutils literal"><span class="pre">rmsd()</span></tt></a>:</p>
+two structures, using <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/rms.html#MDAnalysis.analysis.rms.rmsd" title="(in MDAnalysis v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">rmsd()</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PDB_small</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mobile</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span><span class="n">DCD</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">align</span><span class="o">.</span><span class="n">rmsd</span><span class="p">(</span><span class="n">mobile</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">positions</span><span class="p">,</span> <span class="n">ref</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">positions</span><span class="p">)</span>
@@ -141,7 +141,7 @@ mass (or geometry) first:</p>
 </div>
 <p>The rotation matrix that superimposes <em>mobile</em> on <em>ref</em> while
 minimizing the CA-RMSD is obtained with the
-<tt class="xref py py-func docutils literal"><span class="pre">rotation_matrix()</span></tt> function</p>
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#MDAnalysis.analysis.align.rotation_matrix" title="(in MDAnalysis v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">rotation_matrix()</span></tt></a> function</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">R</span><span class="p">,</span> <span class="n">rmsd</span> <span class="o">=</span> <span class="n">align</span><span class="o">.</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="n">mobile0</span><span class="p">,</span> <span class="n">ref0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">rmsd</span>
 <span class="go">6.8093965864717951</span>
@@ -179,7 +179,7 @@ coordinates that are needed for the shifts, e.g.</p>
 </li>
 <li><p class="first">I suggest writing a function that does the superposition for a given
 time step, reference, and mobile <tt class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></tt> to make the code
-more manageable (or use <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#MDAnalysis.analysis.align.alignto" title="(in MDAnalysis v0.8)"><tt class="xref py py-func docutils literal"><span class="pre">MDAnalysis.analysis.align.alignto()</span></tt></a>)</p>
+more manageable (or use <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#MDAnalysis.analysis.align.alignto" title="(in MDAnalysis v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">MDAnalysis.analysis.align.alignto()</span></tt></a>)</p>
 </li>
 </ul>
 <p class="rubric">Possible solution</p>
@@ -188,11 +188,11 @@ more manageable (or use <a class="reference external" href="http://pythonhosted.
 <p>The code contains a function <tt class="xref py py-func docutils literal"><span class="pre">superpose()</span></tt> and <tt class="xref py py-func docutils literal"><span class="pre">rmsd()</span></tt>. The
 latter is marginally faster because we only need the calculated RMSD
 and not the full rotation matrix. (We are calling the lower-level
-function <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/qcprot.html#MDAnalysis.core.qcprot.CalcRMSDRotationalMatrix" title="(in MDAnalysis v0.8)"><tt class="xref py py-func docutils literal"><span class="pre">MDAnalysis.core.qcprot.CalcRMSDRotationalMatrix()</span></tt></a>
+function <tt class="xref py py-func docutils literal"><span class="pre">MDAnalysis.core.qcprot.CalcRMSDRotationalMatrix()</span></tt>
 directly, which has somewhat non-intuitive calling
 conventions). <tt class="xref py py-func docutils literal"><span class="pre">superpose()</span></tt> also does the superposition of the
 mobile group to the references (but
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#MDAnalysis.analysis.align.alignto" title="(in MDAnalysis v0.8)"><tt class="xref py py-func docutils literal"><span class="pre">alignto()</span></tt></a> is actually a more flexible
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#MDAnalysis.analysis.align.alignto" title="(in MDAnalysis v0.11)"><tt class="xref py py-func docutils literal"><span class="pre">alignto()</span></tt></a> is actually a more flexible
 tool for doing this). Otherwise it is mostly book-keeping, which is
 solved by organizing everything in dictionaries with keys &#8220;CORE&#8221;,
 &#8220;NMP&#8221;, &#8220;LID&#8221;.</p>

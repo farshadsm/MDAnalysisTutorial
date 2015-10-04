@@ -93,7 +93,7 @@
             
   <div class="section" id="trajectory-analysis">
 <h1>Trajectory analysis<a class="headerlink" href="#trajectory-analysis" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt></a> binds together the
+<p>The <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Universe</span></tt></a> binds together the
 static <strong>topology</strong> (which atoms, how are they connected, what
 un-changing properties do the atoms possess (such as partial charge),
 ...) and the changing coordinate information, which is stored in the
@@ -104,15 +104,15 @@ un-changing properties do the atoms possess (such as partial charge),
 </div>
 <p>The standard way to assess each time step (or frame) in a trajectory
 is to <em>iterate</em> over the <tt class="xref py py-attr docutils literal"><span class="pre">Universe.trajectory</span></tt> attribute (which
-is an instance of <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Reader</span></tt></a> class):</p>
+is an instance of <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Reader</span></tt></a> class):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Frame: </span><span class="si">%5d</span><span class="s">, Time: </span><span class="si">%8.3f</span><span class="s"> ps&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">))</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Rgyr: </span><span class="si">%g</span><span class="s"> A&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">radiusOfGyration</span><span class="p">(),</span> <span class="p">))</span>
 </pre></div>
 </div>
-<p>The <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader.time" title="(in MDAnalysis v0.8)"><tt class="xref py py-attr docutils literal"><span class="pre">time</span></tt></a> attribute
+<p>The <tt class="xref py py-attr docutils literal"><span class="pre">time</span></tt> attribute
 contains the <em>current time step</em>. The
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.8)"><tt class="xref py py-class docutils literal"><span class="pre">Reader</span></tt></a> <strong>only contains
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.11)"><tt class="xref py py-class docutils literal"><span class="pre">Reader</span></tt></a> <strong>only contains
 information about one time step</strong>: imagine a cursor or pointer moving
 along the trajectory file. Where the cursor points, there&#8217;s you
 current coordinates, frame number, and time.</p>
