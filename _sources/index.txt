@@ -7,7 +7,7 @@ MDAnalysis Tutorial
 
 :MDAnalysis version: ≥ |MDAnalysis_version|
 :Tutorial release: |release|
-:Tutorial date: |today|
+:Last updated: |today|
 
 
 MDAnalysis_ is an open source Python library that helps you to quickly
@@ -46,7 +46,7 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
    howto
    installation

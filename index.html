@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>MDAnalysis Tutorial &mdash; MDAnalysis Tutorial 1.0.1 documentation</title>
+    <title>MDAnalysis Tutorial &mdash; MDAnalysis Tutorial 1.0.2 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.1',
+        VERSION:     '1.0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
-    <link rel="top" title="MDAnalysis Tutorial 1.0.1 documentation" href="#" />
+    <link rel="top" title="MDAnalysis Tutorial 1.0.2 documentation" href="#" />
     <link rel="next" title="How to use this tutorial" href="howto.html" /> 
   </head>
   <body>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="howto.html" title="How to use this tutorial"
              accesskey="N">next</a> |</li>
-        <li><a href="#">MDAnalysis Tutorial 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -94,9 +94,9 @@
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body">≥ 0.11</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Tutorial release:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">1.0.1</td>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">1.0.2</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Tutorial date:</th><td class="field-body">October 04, 2015</td>
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">October 04, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -128,57 +128,13 @@ interactive Python documentation (<tt class="docutils literal"><span class="pre"
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-methods">Installation methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#local-installation">Local installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation.html#virtual-machine">Virtual machine</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#testing-the-installation">Testing the installation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="preparations.html#python-interpreter">Python interpreter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preparations.html#loading-mdanalysis">Loading MDAnalysis</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basics.html#universe-and-atomgroup">Universe and AtomGroup</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="basics.html#exercise-1">Exercise 1</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="basics.html#selections">Selections</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="basics.html#exercises-2">Exercises 2</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="atomgroups.html#important-methods-and-attributes-of-atomgroup">Important methods and attributes of AtomGroup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="atomgroups.html#exercises-3">Exercises 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="atomgroups.html#processing-atomgroups">Processing AtomGroups</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="trajectories.html#exercises-4">Exercises 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trajectories.html#bells-and-whistles">Bells and whistles</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="writing.html#single-frames">Single frames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="writing.html#trajectories">Trajectories</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="writing.html#example-protein-only-trajectory">Example: Protein-only trajectory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="writing.html#example-saving-dynamic-per-atom-properties-in-b-factor">Example: Saving dynamic per-atom properties in B-factor</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="analysismodule.html#rmsd">RMSD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analysismodule.html#superposition-of-structure">Superposition of structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analysismodule.html#exercise-5">Exercise 5</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
 </ul>
 </div>
 </div>
@@ -230,7 +186,7 @@ ground. <em>Molec. Simul.</em> <strong>40</strong> (2014), 855–877. doi:
         <li class="right" >
           <a href="howto.html" title="How to use this tutorial"
              >next</a> |</li>
-        <li><a href="#">MDAnalysis Tutorial 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
