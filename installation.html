@@ -55,6 +55,7 @@
 <li><a class="reference internal" href="#">Installing MDAnalysis</a><ul>
 <li><a class="reference internal" href="#installation-methods">Installation methods</a><ul>
 <li><a class="reference internal" href="#local-installation">Local installation</a></li>
+<li><a class="reference internal" href="#conda-installation">Conda installation</a></li>
 <li><a class="reference internal" href="#virtual-machine">Virtual machine</a></li>
 </ul>
 </li>
@@ -137,11 +138,21 @@ we will use some of the data files that are part of the tests.)</p>
 <a class="reference external" href="http://wiki.mdanalysis.org/netcdf">installing the netcdf library</a> can become more involved.</p>
 <p>If you need help with installation issues, please do not hesitate to
 ask on the <a class="reference external" href="http://groups.google.com/group/mdnalysis-discussion">user discussion group</a>.</p>
-<p>For this tutorial you can also alternatively use a complete
-installation inside a <a class="reference internal" href="#virtual-machine"><span>Virtual machine</span></a>.</p>
+</div>
+<div class="section" id="conda-installation">
+<span id="id2"></span><h3>Conda installation<a class="headerlink" href="#conda-installation" title="Permalink to this headline">¶</a></h3>
+<p>The latest release of <a class="reference external" href="http://www.mdanalysis.org">MDAnalysis</a> (and the full test suite) can be
+installed from the <a class="reference external" href="https://anaconda.org/MDAnalysis">Anaconda.org channel</a> with <a class="reference external" href="http://conda.pydata.org/docs/get-started.html">conda</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>conda config --add channels MDAnalysis
+conda install mdanalysis
+</pre></div>
+</div>
+<p>The conda package includes the testsuite by default.</p>
 </div>
 <div class="section" id="virtual-machine">
-<span id="id2"></span><h3>Virtual machine<a class="headerlink" href="#virtual-machine" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>Virtual machine<a class="headerlink" href="#virtual-machine" title="Permalink to this headline">¶</a></h3>
+<p>For this tutorial you can also alternatively use a complete
+installation inside a <a class="reference internal" href="#virtual-machine"><span>Virtual machine</span></a>.</p>
 <p>You will first need to clone the <a class="reference external" href="https://github.com/MDAnalysis/MDAnalysisTutorial">tutorial git repository</a> with
 <strong class="program">git</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>git clone https://github.com/MDAnalysis/MDAnalysisTutorial.git

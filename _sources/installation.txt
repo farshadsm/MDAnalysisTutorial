@@ -54,8 +54,6 @@ If there are problems then please have a closer look at the
 If you need help with installation issues, please do not hesitate to
 ask on the `user discussion group`_.
 
-For this tutorial you can also alternatively use a complete
-installation inside a :ref:`virtual-machine`.
 
 .. _pip: http://www.pip-installer.org/en/latest/index.html
 .. _installation notes: http://wiki.mdanalysis.org/Install
@@ -65,15 +63,34 @@ installation inside a :ref:`virtual-machine`.
 .. _tutorial git repository: https://github.com/MDAnalysis/MDAnalysisTutorial
 .. _`vm/README.rst`: https://github.com/MDAnalysis/MDAnalysisTutorial/tree/master/vm
 
+.. _conda-installation:
+
+Conda installation
+------------------
+
+The latest release of MDAnalysis_ (and the full test suite) can be
+installed from the `Anaconda.org channel`_ with conda_ ::
+
+  conda config --add channels MDAnalysis
+  conda install mdanalysis
+
+The conda package includes the testsuite by default.
+
+.. _conda: http://conda.pydata.org/docs/get-started.html
+.. _Anaconda.org channel: https://anaconda.org/MDAnalysis
+
 .. _virtual-machine:
 
 Virtual machine
 ---------------
 
+For this tutorial you can also alternatively use a complete
+installation inside a :ref:`virtual-machine`.
+
 You will first need to clone the `tutorial git repository`_ with
 :program:`git`::
 
-  git clone https://github.com/MDAnalysis/MDAnalysisTutorial.git 
+  git clone https://github.com/MDAnalysis/MDAnalysisTutorial.git
   cd MDAnalysisTutorial
 
 The directory ``vm`` contains configuration files for `vagrant`_
@@ -115,10 +132,8 @@ This can take a few minutes. Ideally, you should only get passing
 tests ("ok" or just a single dot "." when using :code:`verbose=1`) or
 "KnownFailures".
 
-.. Note:: 
+.. Note::
    The test suite consumes a considerable amount of memory (> 4GB) and
    thus it might fail or become very slow on machines with
    insufficient memory such as a :ref:`virtual-machine`. (This is a known
    problem with the test suite and will be addressed in the future.)
-
-
