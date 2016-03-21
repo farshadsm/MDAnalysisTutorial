@@ -23,14 +23,14 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
     <link rel="top" title="MDAnalysis Tutorial 1.0.2 documentation" href="index.html" />
     <link rel="next" title="Installing MDAnalysis" href="installation.html" />
     <link rel="prev" title="MDAnalysis Tutorial" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -42,10 +42,10 @@
         <li class="right" >
           <a href="index.html" title="MDAnalysis Tutorial"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/mdanalysistutorial-logo-200x150.png" alt="Logo"/>
@@ -56,12 +56,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="installation.html"
                         title="next chapter">Installing MDAnalysis</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/howto.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/howto.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -80,20 +82,20 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="how-to-use-this-tutorial">
 <h1>How to use this tutorial<a class="headerlink" href="#how-to-use-this-tutorial" title="Permalink to this headline">¶</a></h1>
 <p>If you have not installed <a class="reference external" href="http://mdanalysis.org">MDAnalysis</a> yet, start with
-<a class="reference internal" href="installation.html#chapter-installing-mdanalysis"><em>Installing MDAnalysis</em></a>.</p>
+<a class="reference internal" href="installation.html#chapter-installing-mdanalysis"><span>Installing MDAnalysis</span></a>.</p>
 <p>If you already have a working installation, i.e., you can successfully
 do</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">MDAnalysis</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MDAnalysis</span>
 <span class="kn">from</span> <span class="nn">MDAnalysis.tests.datafiles</span> <span class="kn">import</span> <span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span>
 </pre></div>
 </div>
 <p>then you can immediately read about the initial
-<a class="reference internal" href="preparations.html#chapter-preparations"><em>Preparations</em></a>.</p>
+<a class="reference internal" href="preparations.html#chapter-preparations"><span>Preparations</span></a>.</p>
 <p>After that, the tutorial is designed to be read and worked through by
 yourself at your own pace. It contains short examples that introduce
 important features and ideas. You should run all these examples and
@@ -101,13 +103,13 @@ code snippets yourself. <em>Exercises</em> (with solutions) are included. You
 can</p>
 <ul>
 <li><p class="first">follow the tutorial online in your browser, starting with the
-chapter <a class="reference internal" href="basics.html#chapter-basics"><em>Basics</em></a>, or</p>
+chapter <a class="reference internal" href="basics.html#chapter-basics"><span>Basics</span></a>, or</p>
 </li>
 <li><p class="first">use the Jupyter ipython notebook <a class="reference external" href="http://nbviewer.ipython.org/github/MDAnalysis/MDAnalysisTutorial/blob/master/notebooks/MDAnalysisTutorial.ipynb">MDAnalysisTutorial.ipynb</a> (which
 contains all the code and exercises but fewer hyperlinks and images
 and less explanatory text). <a class="reference external" href="https://raw.githubusercontent.com/MDAnalysis/MDAnalysisTutorial/master/notebooks/MDAnalysisTutorial.ipynb">Download the notebook</a> and open it
 with <strong class="program">ipython</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>ipython notebook MDAnalysisTutorial.ipynb
+<div class="highlight-python"><div class="highlight"><pre><span></span>ipython notebook MDAnalysisTutorial.ipynb
 </pre></div>
 </div>
 </li>
@@ -120,7 +122,7 @@ with <strong class="program">ipython</strong>:</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -132,12 +134,12 @@ with <strong class="program">ipython</strong>:</p>
         <li class="right" >
           <a href="index.html" title="MDAnalysis Tutorial"
              >previous</a> |</li>
-        <li><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Oliver Beckstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
     </div>
   </body>
 </html>
