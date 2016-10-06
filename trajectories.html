@@ -2,11 +2,11 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Trajectory analysis &mdash; MDAnalysis Tutorial 1.0.2 documentation</title>
+    <title>Trajectory analysis &#8212; MDAnalysis Tutorial 1.0.2 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="MDAnalysis Tutorial 1.0.2 documentation" href="index.html" />
     <link rel="next" title="Writing coordinates" href="writing.html" />
     <link rel="prev" title="Working with AtomGroups" href="atomgroups.html" /> 
@@ -42,7 +44,7 @@
         <li class="right" >
           <a href="atomgroups.html" title="Working with AtomGroups"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -75,14 +77,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -95,31 +94,31 @@
             
   <div class="section" id="trajectory-analysis">
 <h1>Trajectory analysis<a class="headerlink" href="#trajectory-analysis" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.14)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a> binds together the
+<p>The <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a> binds together the
 static <strong>topology</strong> (which atoms, how are they connected, what
 un-changing properties do the atoms possess (such as partial charge),
 ...) and the changing coordinate information, which is stored in the
 <strong>trajectory</strong>.</p>
 <p>The length of a trajectory (number of frames) is</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The standard way to assess each time step (or frame) in a trajectory
 is to <em>iterate</em> over the <code class="xref py py-attr docutils literal"><span class="pre">Universe.trajectory</span></code> attribute (which
-is an instance of <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.14)"><code class="xref py py-class docutils literal"><span class="pre">Reader</span></code></a> class):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Frame: </span><span class="si">%5d</span><span class="s2">, Time: </span><span class="si">%8.3f</span><span class="s2"> ps&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Rgyr: </span><span class="si">%g</span><span class="s2"> A&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">(),</span> <span class="p">))</span>
+is an instance of <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">Reader</span></code></a> class):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frame: </span><span class="si">%5d</span><span class="s2">, Time: </span><span class="si">%8.3f</span><span class="s2"> ps&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rgyr: </span><span class="si">%g</span><span class="s2"> A&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">(),</span> <span class="p">))</span>
 </pre></div>
 </div>
 <p>The <code class="xref py py-attr docutils literal"><span class="pre">time</span></code> attribute
 contains the <em>current time step</em>. The
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.14)"><code class="xref py py-class docutils literal"><span class="pre">Reader</span></code></a> <strong>only contains
+<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">Reader</span></code></a> <strong>only contains
 information about one time step</strong>: imagine a cursor or pointer moving
 along the trajectory file. Where the cursor points, there&#8217;s you
 current coordinates, frame number, and time.</p>
 <p>Normally you will collect the data in a list or array, e.g.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Rgyr</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Rgyr</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
    <span class="n">Rgyr</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">protein</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">()))</span>
@@ -141,8 +140,8 @@ details) then one might have to recalculate the selection for each
 time step and one would put it inside the loop over frames.</p>
 </div>
 <p>The data can be plotted to give the graph below:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># quick plot</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># quick plot</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Rgyr</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Rgyr</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">r&quot;$R_G$&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (ps)&quot;</span><span class="p">)</span>
@@ -153,15 +152,15 @@ time step and one would put it inside the loop over frames.</p>
 </div>
 <p>The <span class="math">\(R_G(t)\)</span> increases over time, indicating an opening up of
 the AdK enzyme.</p>
-<a class="reference internal image-reference" href="_images/Rgyr.svg"><div align="center" class="align-center"><img src="_images/Rgyr.svg" width="40%" /></div>
+<a class="reference internal image-reference" href="_images/Rgyr.svg"><div align="center" class="align-center"><img alt="_images/Rgyr.svg" src="_images/Rgyr.svg" width="40%" /></div>
 </a>
 <div class="section" id="exercises-4">
 <h2>Exercises 4<a class="headerlink" href="#exercises-4" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Take the functions to calculate <span class="math">\(\theta_\text{NMP}\)</span> and
 <span class="math">\(\theta_\text{LID}\)</span></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="k">import</span> <span class="n">norm</span>
 
 <span class="k">def</span> <span class="nf">theta_NMP</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the NMP-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
@@ -194,11 +193,11 @@ the AdK enzyme.</p>
 <p>Why could such a plot be useful?</p>
 </li>
 </ol>
-<a class="reference internal image-reference" href="_images/NMP_LID_angle_projection.svg"><div align="center" class="align-center"><img src="_images/NMP_LID_angle_projection.svg" width="50%" /></div>
+<a class="reference internal image-reference" href="_images/NMP_LID_angle_projection.svg"><div align="center" class="align-center"><img alt="_images/NMP_LID_angle_projection.svg" src="_images/NMP_LID_angle_projection.svg" width="50%" /></div>
 </a>
 <p>The code to generate the figure contains <code class="xref py py-func docutils literal"><span class="pre">theta_LID()</span></code> and
 <a class="reference internal" href="atomgroups.html#theta_NMP" title="theta_NMP"><code class="xref py py-func docutils literal"><span class="pre">theta_NMP()</span></code></a>.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -256,8 +255,8 @@ the AdK enzyme.</p>
 56
 57
 58
-59</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
+59</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="k">import</span> <span class="n">norm</span>
 
 <span class="k">def</span> <span class="nf">theta_NMP</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the NMP-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
@@ -281,9 +280,9 @@ the AdK enzyme.</p>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">MDAnalysis</span>
-    <span class="kn">from</span> <span class="nn">MDAnalysis.tests.datafiles</span> <span class="kn">import</span> <span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span>
+    <span class="kn">from</span> <span class="nn">MDAnalysis.tests.datafiles</span> <span class="k">import</span> <span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span>
     <span class="kn">import</span> <span class="nn">matplotlib</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="hll">    <span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span><span class="p">)</span>
 </span><span class="hll">    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">theta_NMP</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">theta_LID</span><span class="p">(</span><span class="n">u</span><span class="p">))</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">])</span>
@@ -295,8 +294,8 @@ the AdK enzyme.</p>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">NMP</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">r&quot;$\theta_{\mathrm{NMP}}$&quot;</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">LID</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">r&quot;$\theta_{\mathrm{LID}}$&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">NMP</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">r&quot;$\theta_{\mathrm</span><span class="si">{NMP}</span><span class="s2">}$&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">LID</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">r&quot;$\theta_{\mathrm</span><span class="si">{LID}</span><span class="s2">}$&quot;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">r&quot;time $t$ (ps)&quot;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">r&quot;angle $\theta$&quot;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">degreeFormatter</span><span class="p">)</span>
@@ -304,8 +303,8 @@ the AdK enzyme.</p>
 
     <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">NMP</span><span class="p">,</span> <span class="n">LID</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">r&quot;NMP-CORE angle $\theta_{\mathrm{NMP}}$&quot;</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">r&quot;LID-CORE angle $\theta_{\mathrm{LID}}$&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">r&quot;NMP-CORE angle $\theta_{\mathrm</span><span class="si">{NMP}</span><span class="s2">}$&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">r&quot;LID-CORE angle $\theta_{\mathrm</span><span class="si">{LID}</span><span class="s2">}$&quot;</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">degreeFormatter</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">degreeFormatter</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick_right</span><span class="p">()</span>
@@ -314,13 +313,13 @@ the AdK enzyme.</p>
     <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.88</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">,</span> <span class="s1">&#39;pdf&#39;</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">):</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;NMP_LID_angle_projection.{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ext</span><span class="p">))</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;NMP_LID_angle_projection.</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ext</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
 <p>Note that one would normally write the code more efficiently and
 generate the atom groups once and then pass them to a simple function
 to calculate the angle</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">theta</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">theta</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the angle between BA and BC for AtomGroups A, B, C&quot;&quot;&quot;</span>
     <span class="n">B_center</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">centroid</span><span class="p">()</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">centroid</span><span class="p">()</span> <span class="o">-</span> <span class="n">B_center</span>
@@ -335,7 +334,7 @@ to calculate the angle</p>
 <p class="rubric">Quick data acquisition</p>
 <p>Especially useful for interactive analysis in <strong class="program">ipython
 --pylab</strong> using list comprehensions (implicit for loops):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">protein</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">())</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">])</span>
 <span class="n">time</span><span class="p">,</span> <span class="n">RG</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">RG</span><span class="p">)</span>
@@ -343,7 +342,7 @@ to calculate the angle</p>
 </div>
 <p class="rubric">More on the trajectory iterator</p>
 <p>One can directly <strong>jump to a frame</strong> by using &#8220;indexing syntax&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span>
 <span class="go">&lt; Timestep 51 with unit cell dimensions array([  0.,   0.,   0.,  90.,  90.,  90.], dtype=float32) &gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span>
 <span class="go">50</span>
@@ -351,8 +350,8 @@ to calculate the angle</p>
 </div>
 <p>You can also <strong>slice trajectories</strong>, e.g. if you want to start at the 10th
 frame and go to 10th before the end, and only use every 5th frame:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -372,8 +371,8 @@ Amber NETCDF do.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">One can iterate through multiple trajectories in parallel
-with the help of <a class="reference external" href="http://docs.python.org/library/itertools.html#itertools.izip" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">itertools.izip()</span></code></a> from the
-<a class="reference external" href="http://docs.python.org/library/itertools.html#module-itertools" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">itertools</span></code></a> module, which also provide other
+with the help of <a class="reference external" href="https://docs.python.org/2/library/itertools.html#itertools.izip" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">itertools.izip()</span></code></a> from the
+<a class="reference external" href="https://docs.python.org/2/library/itertools.html#module-itertools" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">itertools</span></code></a> module, which also provide other
 interesting ways to work with trajectory iterators.</p>
 </div>
 </div>
@@ -397,12 +396,12 @@ interesting ways to work with trajectory iterators.</p>
         <li class="right" >
           <a href="atomgroups.html" title="Working with AtomGroups"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Oliver Beckstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+        &#169; Copyright 2015, Oliver Beckstein.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

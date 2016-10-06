@@ -213,7 +213,7 @@ Exercises 2
    selections instead of slicing because the index in the slice might
    not correspond to the actual residue ids (minus 1): If a number of
    residues (e.g. 150-160) are missing from the structure then the
-   selection will simply give you residues 100-149 and 151-200 but the
+   selection will simply give you residues 100-149 and 161-200 but the
    slice 99:200 would give you residues 100-149 and *161-209*.
 
 2. Select all residues that do not contain a :math:`\mathrm{C}_\beta`

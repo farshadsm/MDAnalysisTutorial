@@ -2,11 +2,11 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installing MDAnalysis &mdash; MDAnalysis Tutorial 1.0.2 documentation</title>
+    <title>Installing MDAnalysis &#8212; MDAnalysis Tutorial 1.0.2 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,6 +25,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="MDAnalysis Tutorial 1.0.2 documentation" href="index.html" />
     <link rel="next" title="Preparations" href="preparations.html" />
     <link rel="prev" title="How to use this tutorial" href="howto.html" /> 
@@ -42,7 +44,7 @@
         <li class="right" >
           <a href="howto.html" title="How to use this tutorial"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -80,14 +82,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -108,13 +107,13 @@ setting (development tools (gcc tool chain), python development
 headers, full scientific Python stack with numpy, scipy, matplotlib
 already installed, working netcdf/HDF5 library), installation will be
 as simple as</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip install --user MDAnalysis MDAnalysisTests
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">MDAnalysis</span> <span class="n">MDAnalysisTests</span>
 </pre></div>
 </div>
 <p>In a less ideal setting, one typically has to install additional
 packages through the distribution&#8217;s package manager as described in
-the links under <a class="reference internal" href="#local-installation"><span>Local installation</span></a>. Alternatively, for this
-tutorial one can also set up a Linux <a class="reference internal" href="#virtual-machine"><span>Virtual machine</span></a> that
+the links under <a class="reference internal" href="#local-installation"><span class="std std-ref">Local installation</span></a>. Alternatively, for this
+tutorial one can also set up a Linux <a class="reference internal" href="#virtual-machine"><span class="std std-ref">Virtual machine</span></a> that
 installs itself with everything needed and the most recent release of
 MDAnalysis.</p>
 <div class="admonition note">
@@ -128,7 +127,7 @@ MDAnalysis.</p>
 <span id="id1"></span><h3>Local installation<a class="headerlink" href="#local-installation" title="Permalink to this headline">¶</a></h3>
 <p>The latest release of <a class="reference external" href="http://www.mdanalysis.org">MDAnalysis</a> (and the full test suite) can be
 installed from the python package index with <a class="reference external" href="http://www.pip-installer.org/en/latest/index.html">pip</a></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip install --user MDAnalysis MDAnalysisTests
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">MDAnalysis</span> <span class="n">MDAnalysisTests</span>
 </pre></div>
 </div>
 <p>(Installation of the test suite is required for this tutorial because
@@ -143,8 +142,8 @@ ask on the <a class="reference external" href="http://groups.google.com/group/md
 <span id="id2"></span><h3>Conda installation<a class="headerlink" href="#conda-installation" title="Permalink to this headline">¶</a></h3>
 <p>The latest release of <a class="reference external" href="http://www.mdanalysis.org">MDAnalysis</a> (and the full test suite) can be
 installed from the <a class="reference external" href="https://anaconda.org/MDAnalysis">Anaconda.org channel</a> with <a class="reference external" href="http://conda.pydata.org/docs/get-started.html">conda</a></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda config --add channels MDAnalysis
-conda install mdanalysis
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">channels</span> <span class="n">MDAnalysis</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">mdanalysis</span>
 </pre></div>
 </div>
 <p>The conda package includes the testsuite by default.</p>
@@ -152,11 +151,11 @@ conda install mdanalysis
 <div class="section" id="virtual-machine">
 <span id="id3"></span><h3>Virtual machine<a class="headerlink" href="#virtual-machine" title="Permalink to this headline">¶</a></h3>
 <p>For this tutorial you can also alternatively use a complete
-installation inside a <a class="reference internal" href="#virtual-machine"><span>Virtual machine</span></a>.</p>
+installation inside a <a class="reference internal" href="#virtual-machine"><span class="std std-ref">Virtual machine</span></a>.</p>
 <p>You will first need to clone the <a class="reference external" href="https://github.com/MDAnalysis/MDAnalysisTutorial">tutorial git repository</a> with
 <strong class="program">git</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git clone https://github.com/MDAnalysis/MDAnalysisTutorial.git
-cd MDAnalysisTutorial
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">MDAnalysis</span><span class="o">/</span><span class="n">MDAnalysisTutorial</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">MDAnalysisTutorial</span>
 </pre></div>
 </div>
 <p>The directory <code class="docutils literal"><span class="pre">vm</span></code> contains configuration files for <a class="reference external" href="https://www.vagrantup.com/">vagrant</a>
@@ -164,14 +163,14 @@ virtual machines (VM) (using <a class="reference external" href="https://www.vir
 describes setup in more detail but provided that <a class="reference external" href="https://www.vagrantup.com/">vagrant</a> and
 <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> are installed, the following should provide you with a
 working VM:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>cd vm/Ubuntu/14.04
-vagrant up
-vagrant ssh
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">vm</span><span class="o">/</span><span class="n">Ubuntu</span><span class="o">/</span><span class="mf">14.04</span>
+<span class="n">vagrant</span> <span class="n">up</span>
+<span class="n">vagrant</span> <span class="n">ssh</span>
 </pre></div>
 </div>
 <p>When you are done, just exit the ssh session (<code class="docutils literal"><span class="pre">exit</span></code> or Control-D)
 and halt the VM:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>vagrant halt
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">halt</span>
 </pre></div>
 </div>
 <p>You can access your real home directory (<span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal"><span class="pre">$HOME</span></code>) in the virtual
@@ -184,7 +183,7 @@ deletion of files!</p>
 <h2>Testing the installation<a class="headerlink" href="#testing-the-installation" title="Permalink to this headline">¶</a></h2>
 <p>MDAnalysis comes with over 2500 <a class="reference external" href="http://wiki.mdanalysis.org/UnitTests">test cases</a> that check its
 functionality. These test cases can be run with the command</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>python -c &#39;from MDAnalysis.tests import test; test(label=&quot;full&quot;, verbose=3, extra_argv=[&quot;--exe&quot;])&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;from MDAnalysis.tests import test; test(label=&quot;full&quot;, verbose=3, extra_argv=[&quot;--exe&quot;])&#39;</span>
 </pre></div>
 </div>
 <p>This can take a few minutes. Ideally, you should only get passing
@@ -194,7 +193,7 @@ tests (&#8220;ok&#8221; or just a single dot &#8221;.&#8221; when using <code cl
 <p class="first admonition-title">Note</p>
 <p class="last">The test suite consumes a considerable amount of memory (&gt; 4GB) and
 thus it might fail or become very slow on machines with
-insufficient memory such as a <a class="reference internal" href="#virtual-machine"><span>Virtual machine</span></a>. (This is a known
+insufficient memory such as a <a class="reference internal" href="#virtual-machine"><span class="std std-ref">Virtual machine</span></a>. (This is a known
 problem with the test suite and will be addressed in the future.)</p>
 </div>
 </div>
@@ -218,12 +217,12 @@ problem with the test suite and will be addressed in the future.)</p>
         <li class="right" >
           <a href="howto.html" title="How to use this tutorial"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, Oliver Beckstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+        &#169; Copyright 2015, Oliver Beckstein.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>
