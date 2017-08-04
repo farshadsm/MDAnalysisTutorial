@@ -56,8 +56,8 @@ also multi-frame PDB files).</p>
 <span id="writing-single-frames"></span><h2>Single frames<a class="headerlink" href="#single-frames" title="Permalink to this headline">¶</a></h2>
 <p>The most straightforward way to write to a file that can only hold a
 single frame is to use the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.write" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a> method of any
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a> as already also shown under
+<code class="xref py py-meth docutils literal"><span class="pre">write()</span></code> method of any
+<code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code> as already also shown under
 <a class="reference internal" href="atomgroups.html#processing-atomgroups"><span class="std std-ref">Processing AtomGroups</span></a>. For instance, to only write out the
 protein without solvent to a file in GRO format:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PDB</span><span class="p">)</span>
@@ -99,7 +99,7 @@ example below:</p>
 </div>
 <p>The loop steps through the input trajectory frame by frame. The
 coordinates of the selection (the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a> <code class="docutils literal"><span class="pre">protein</span></code>) change
+<code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code> <code class="docutils literal"><span class="pre">protein</span></code>) change
 accordingly and are then written as a new frame into the output
 trajectory.</p>
 <p>The output trajectory only contains the coordinates of the
@@ -118,8 +118,8 @@ to a reference structure (line 23). We take as reference the closed
 conformation (after a structural superposition on the CORE domain with
 <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/analysis/align.html#MDAnalysis.analysis.align.alignto" title="(in MDAnalysis v0.15)"><code class="xref py py-func docutils literal"><span class="pre">alignto()</span></code></a>). The shifts are written
 into the B-factor with the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.set_bfactor" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">set_bfactor()</span></code></a> method of
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a>. Each frame is written
+<code class="xref py py-meth docutils literal"><span class="pre">set_bfactor()</span></code> method of
+<code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code>. Each frame is written
 out as part of a multi-frame PDB file:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2

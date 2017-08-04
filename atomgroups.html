@@ -47,10 +47,10 @@
             
   <div class="section" id="working-with-atomgroups">
 <h1>Working with AtomGroups<a class="headerlink" href="#working-with-atomgroups" title="Permalink to this headline">¶</a></h1>
-<p>A <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a> has a large number of
+<p>A <code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code> has a large number of
 methods attributes defined that provide information about the atoms
 such as names, indices, or the coordinates in the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.positions" title="(in MDAnalysis v0.15)"><code class="xref py py-attr docutils literal"><span class="pre">positions</span></code></a> attribute:</p>
+<code class="xref py py-attr docutils literal"><span class="pre">positions</span></code> attribute:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein and name CA&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">CA</span><span class="o">.</span><span class="n">positions</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">shape</span>
@@ -61,35 +61,35 @@ such as names, indices, or the coordinates in the
 MDAnalysis is to get trajectory data into numpy arrays!</p>
 <div class="section" id="important-methods-and-attributes-of-atomgroup">
 <h2>Important methods and attributes of AtomGroup<a class="headerlink" href="#important-methods-and-attributes-of-atomgroup" title="Permalink to this headline">¶</a></h2>
-<p>The coordinates <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.positions" title="(in MDAnalysis v0.15)"><code class="xref py py-attr docutils literal"><span class="pre">positions</span></code></a>
+<p>The coordinates <code class="xref py py-attr docutils literal"><span class="pre">positions</span></code>
 attribute is probably the most important information that you can get
-from an <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a>.</p>
+from an <code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code>.</p>
 <p>Other quantities that can be easily calculated for a
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a> are</p>
+<code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code> are</p>
 <ul>
 <li><p class="first">the center of mass
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.center_of_mass" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">center_of_mass()</span></code></a> and the
+<code class="xref py py-meth docutils literal"><span class="pre">center_of_mass()</span></code> and the
 center of geoemtry (or centroid)
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.center_of_geometry" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">center_of_geometry()</span></code></a>
+<code class="xref py py-meth docutils literal"><span class="pre">center_of_geometry()</span></code>
 (equivalent to
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.centroid" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">centroid()</span></code></a>);</p>
+<code class="xref py py-meth docutils literal"><span class="pre">centroid()</span></code>);</p>
 </li>
 <li><p class="first">the total mass
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.total_mass" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">total_mass()</span></code></a>;</p>
+<code class="xref py py-meth docutils literal"><span class="pre">total_mass()</span></code>;</p>
 </li>
 <li><p class="first">the total charge
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.total_charge" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">total_charge()</span></code></a> (if partial
+<code class="xref py py-meth docutils literal"><span class="pre">total_charge()</span></code> (if partial
 charges are defined in the topology);</p>
 </li>
 <li><p class="first">the radius of gyration</p>
 <div class="math">
 \[R_\mathrm{gyr} = \sqrt{\frac{1}{M}\sum_{i=1}^{N} m_i(\mathbf{r}_i - \mathbf{R})^2}\]</div>
-<p>with <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.radius_of_gyration" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">radius_of_gyration()</span></code></a>;</p>
+<p>with <code class="xref py py-meth docutils literal"><span class="pre">radius_of_gyration()</span></code>;</p>
 </li>
 <li><p class="first">the principal axes <span class="math">\(\mathbf{p}_1, \mathbf{p}_2, \mathbf{p}_1\)</span>
-from <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.principal_axes" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">principal_axes()</span></code></a> via
+from <code class="xref py py-meth docutils literal"><span class="pre">principal_axes()</span></code> via
 a diagonalization of the tensor of inertia
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.moment_of_inertia" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">moment_of_inertia()</span></code></a>,</p>
+<code class="xref py py-meth docutils literal"><span class="pre">moment_of_inertia()</span></code>,</p>
 <div class="math">
 \[\Lambda = U^T I U, \quad \text{with}\  U=(\mathbf{p}_1,
 \mathbf{p}_2, \mathbf{p}_3)\]</div>
@@ -181,7 +181,7 @@ as an argument and computes <span class="math">\(\theta_\text{NMP}\)</span>:</p>
 <dt id="theta_NMP">
 <code class="descname">theta_NMP</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#theta_NMP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the NMP-CORE angle for E. coli AdK in degrees from
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a> <em>u</em></p>
+<code class="xref py py-class docutils literal"><span class="pre">Universe</span></code> <em>u</em></p>
 </dd></dl>
 
 <p>Use the following <em>incomplete</em> code as a starting point:</p>
@@ -267,8 +267,8 @@ the file with <code class="code docutils literal"><span class="pre">%run</span> 
 </div>
 <div class="section" id="processing-atomgroups">
 <span id="id2"></span><h2>Processing AtomGroups<a class="headerlink" href="#processing-atomgroups" title="Permalink to this headline">¶</a></h2>
-<p>You can directly write a <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a>
-to a file with the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.write" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a>
+<p>You can directly write a <code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code>
+to a file with the <code class="xref py py-meth docutils literal"><span class="pre">write()</span></code>
 method:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORE</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 1:29 or resid 60:121 or resid 160:214&quot;</span><span class="p">)</span>
 <span class="n">CORE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;AdK_CORE.pdb&quot;</span><span class="p">)</span>
@@ -283,7 +283,7 @@ hydration shell around a protein to a file</p>
 <p>for further analysis or visualization.</p>
 <p>You can also write <a class="reference external" href="http://www.gromacs.org">Gromacs</a> index files (in case you don&#8217;t like
 <strong class="program">make_ndx</strong>...) with the
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.AtomGroup.write_selection" title="(in MDAnalysis v0.15)"><code class="xref py py-meth docutils literal"><span class="pre">write_selection()</span></code></a> method:</p>
+<code class="xref py py-meth docutils literal"><span class="pre">write_selection()</span></code> method:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORE</span><span class="o">.</span><span class="n">write_selection</span><span class="p">(</span><span class="s2">&quot;CORE.ndx&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CORE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -291,8 +291,8 @@ hydration shell around a protein to a file</p>
 <p class="first admonition-title">See also</p>
 <p>The lists of supported</p>
 <ul class="last simple">
-<li><a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/init.html#id1">coordinate file formats</a></li>
-<li><a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/selections_modules.html#selection-exporters">selection formats</a></li>
+<li><a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/coordinates/init.html#id1">coordinate file formats</a></li>
+<li><a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections_modules.html#selection-exporters">selection formats</a></li>
 </ul>
 </div>
 </div>

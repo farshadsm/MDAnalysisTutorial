@@ -4,10 +4,10 @@
  Working with AtomGroups
 =========================
 
-A :class:`~MDAnalysis.core.AtomGroup.AtomGroup` has a large number of
+A :class:`~MDAnalysis.core.groups.AtomGroup` has a large number of
 methods attributes defined that provide information about the atoms
 such as names, indices, or the coordinates in the
-:attr:`~MDAnalysis.core.AtomGroup.AtomGroup.positions` attribute::
+:attr:`~MDAnalysis.core.groups.AtomGroup.positions` attribute::
 
   >>> CA = u.select_atoms("protein and name CA")
   >>> r = CA.positions
@@ -21,25 +21,25 @@ MDAnalysis is to get trajectory data into numpy arrays!
 Important methods and attributes of AtomGroup
 =============================================
 
-The coordinates :attr:`~MDAnalysis.core.AtomGroup.AtomGroup.positions`
+The coordinates :attr:`~MDAnalysis.core.groups.AtomGroup.positions`
 attribute is probably the most important information that you can get
-from an :class:`~MDAnalysis.core.AtomGroup.AtomGroup`.
+from an :class:`~MDAnalysis.core.groups.AtomGroup`.
 
 Other quantities that can be easily calculated for a
-:class:`~MDAnalysis.core.AtomGroup.AtomGroup` are
+:class:`~MDAnalysis.core.groups.AtomGroup` are
 
 * the center of mass
-  :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.center_of_mass` and the
+  :meth:`~MDAnalysis.core.groups.AtomGroup.center_of_mass` and the
   center of geoemtry (or centroid)
-  :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.center_of_geometry`
+  :meth:`~MDAnalysis.core.groups.AtomGroup.center_of_geometry`
   (equivalent to
-  :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.centroid`);
+  :meth:`~MDAnalysis.core.groups.AtomGroup.centroid`);
 
 * the total mass
-  :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.total_mass`;
+  :meth:`~MDAnalysis.core.groups.AtomGroup.total_mass`;
 
 * the total charge
-  :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.total_charge` (if partial
+  :meth:`~MDAnalysis.core.groups.AtomGroup.total_charge` (if partial
   charges are defined in the topology);
 
 * the radius of gyration
@@ -48,12 +48,12 @@ Other quantities that can be easily calculated for a
 
         R_\mathrm{gyr} = \sqrt{\frac{1}{M}\sum_{i=1}^{N} m_i(\mathbf{r}_i - \mathbf{R})^2}
 
-  with :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.radius_of_gyration`;
+  with :meth:`~MDAnalysis.core.groups.AtomGroup.radius_of_gyration`;
 
 * the principal axes :math:`\mathbf{p}_1, \mathbf{p}_2, \mathbf{p}_1`
-  from :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.principal_axes` via
+  from :meth:`~MDAnalysis.core.groups.AtomGroup.principal_axes` via
   a diagonalization of the tensor of inertia
-  :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.moment_of_inertia`,
+  :meth:`~MDAnalysis.core.groups.AtomGroup.moment_of_inertia`,
 
   .. math::
 
@@ -154,7 +154,7 @@ The angle between vectors :math:`\vec{BA}` and :math:`\vec{BC}` is
    .. function:: theta_NMP(u)
  
       Calculate the NMP-CORE angle for E. coli AdK in degrees from
-      :class:`~MDAnalysis.core.AtomGroup.Universe` *u*      
+      :class:`~MDAnalysis.core.groups.Universe` *u*      
 
    Use the following *incomplete* code as a starting point::
 
@@ -203,8 +203,8 @@ The angle between vectors :math:`\vec{BA}` and :math:`\vec{BC}` is
 Processing AtomGroups
 =====================
 
-You can directly write a :class:`~MDAnalysis.core.AtomGroup.AtomGroup`
-to a file with the :meth:`~MDAnalysis.core.AtomGroup.AtomGroup.write`
+You can directly write a :class:`~MDAnalysis.core.groups.AtomGroup`
+to a file with the :meth:`~MDAnalysis.core.groups.AtomGroup.write`
 method::
 
    CORE = u.select_atoms("resid 1:29 or resid 60:121 or resid 160:214")
@@ -221,7 +221,7 @@ for further analysis or visualization.
 
 You can also write Gromacs_ index files (in case you don't like
 :program:`make_ndx`...) with the
-:meth:`~MDAnalysis.core.AtomGroup.AtomGroup.write_selection` method::
+:meth:`~MDAnalysis.core.groups.AtomGroup.write_selection` method::
 
   CORE.write_selection("CORE.ndx", name="CORE")
   
@@ -233,7 +233,7 @@ You can also write Gromacs_ index files (in case you don't like
 
 
 .. _coordinate file formats: 
-   http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/init.html#id1
+   http://docs.mdanalysis.org/documentation_pages/coordinates/init.html#id1
 .. _selection formats:
-   http://pythonhosted.org/MDAnalysis/documentation_pages/selections_modules.html#selection-exporters
+   http://docs.mdanalysis.org/documentation_pages/selections_modules.html#selection-exporters
 .. _Gromacs: http://www.gromacs.org

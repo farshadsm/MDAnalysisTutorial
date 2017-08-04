@@ -20,8 +20,8 @@ Single frames
 
 The most straightforward way to write to a file that can only hold a
 single frame is to use the
-:meth:`~MDAnalysis.core.AtomGroup.AtomGroup.write` method of any
-:class:`~MDAnalysis.core.AtomGroup.AtomGroup` as already also shown under
+:meth:`~MDAnalysis.core.groups.AtomGroup.write` method of any
+:class:`~MDAnalysis.core.groups.AtomGroup` as already also shown under
 :ref:`processing-atomgroups`. For instance, to only write out the
 protein without solvent to a file in GRO format::
 
@@ -68,7 +68,7 @@ example below::
 
 The loop steps through the input trajectory frame by frame. The
 coordinates of the selection (the
-:class:`~MDAnalysis.core.AtomGroup.AtomGroup` ``protein``) change
+:class:`~MDAnalysis.core.groups.AtomGroup` ``protein``) change
 accordingly and are then written as a new frame into the output
 trajectory.
 
@@ -91,8 +91,8 @@ to a reference structure (line 23). We take as reference the closed
 conformation (after a structural superposition on the CORE domain with
 :func:`~MDAnalysis.analysis.align.alignto`). The shifts are written
 into the B-factor with the
-:meth:`~MDAnalysis.core.AtomGroup.AtomGroup.set_bfactor` method of
-:class:`~MDAnalysis.core.AtomGroup.AtomGroup`. Each frame is written
+:meth:`~MDAnalysis.core.groups.AtomGroup.set_bfactor` method of
+:class:`~MDAnalysis.core.groups.AtomGroup`. Each frame is written
 out as part of a multi-frame PDB file:
 
 .. literalinclude:: /code/bfacmovie.py

@@ -4,7 +4,7 @@
  Trajectory analysis
 =====================
 
-The :class:`~MDAnalysis.core.AtomGroup.Universe` binds together the
+The :class:`~MDAnalysis.core.groups.Universe` binds together the
 static **topology** (which atoms, how are they connected, what
 un-changing properties do the atoms possess (such as partial charge),
 ...) and the changing coordinate information, which is stored in the
@@ -53,10 +53,10 @@ Normally you will collect the data in a list or array, e.g. ::
    time step and one would put it inside the loop over frames.
 
 .. _selections: 
-   http://pythonhosted.org/MDAnalysis/documentation_pages/selections.html
+   http://docs.mdanalysis.org/documentation_pages/selections.html
 
 .. _selection keywords:
-   http://pythonhosted.org/MDAnalysis/documentation_pages/selections.html#selection-keywords
+   http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords
 
 The data can be plotted to give the graph below::
 

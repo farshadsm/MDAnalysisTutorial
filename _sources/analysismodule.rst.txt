@@ -127,7 +127,7 @@ solved by organizing everything in dictionaries with keys "CORE",
 .. literalinclude:: /code/domrigid.py
    :linenos:
 
-.. _MDAnalysis.analysis: http://pythonhosted.org/MDAnalysis/documentation_pages/analysis_modules.html
+.. _MDAnalysis.analysis: http://docs.mdanalysis.org/documentation_pages/analysis_modules.html
 .. _Examples: 
    http://wiki.mdanalysis.org/Examples
 .. _example scripts:

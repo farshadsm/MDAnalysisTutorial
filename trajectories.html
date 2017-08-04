@@ -47,7 +47,7 @@
             
   <div class="section" id="trajectory-analysis">
 <h1>Trajectory analysis<a class="headerlink" href="#trajectory-analysis" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/core/AtomGroup.html#MDAnalysis.core.AtomGroup.Universe" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a> binds together the
+<p>The <code class="xref py py-class docutils literal"><span class="pre">Universe</span></code> binds together the
 static <strong>topology</strong> (which atoms, how are they connected, what
 un-changing properties do the atoms possess (such as partial charge),
 ...) and the changing coordinate information, which is stored in the
@@ -82,13 +82,13 @@ current coordinates, frame number, and time.</p>
 <p class="first admonition-title">Note</p>
 <p>It is important to note that the coordinates and related properties
 calculated from the coordinates such as the radius of gyration
-<em>change</em> while <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/selections.html">selections</a> on static properties (such as
+<em>change</em> while <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html">selections</a> on static properties (such as
 <code class="code docutils literal"><span class="pre">protein</span></code> in the example) do not change when moving through a
 trajectory: You can define the selection <em>once</em> and then
 recalculate the property of interest for each frame of the
 trajectory.</p>
 <p class="last">However, if selections contain distance-dependent queries (such as
-<code class="docutils literal"><span class="pre">around</span></code> or <code class="docutils literal"><span class="pre">point</span></code>, see <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/selections.html#selection-keywords">selection keywords</a> for more
+<code class="docutils literal"><span class="pre">around</span></code> or <code class="docutils literal"><span class="pre">point</span></code>, see <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords">selection keywords</a> for more
 details) then one might have to recalculate the selection for each
 time step and one would put it inside the loop over frames.</p>
 </div>
