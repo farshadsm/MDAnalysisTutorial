@@ -71,13 +71,13 @@ variables :code:`PSF` and :code:`DCD`::
 .. rubric:: Footnotes
 
 .. [#ipython_install] If you do not have ipython_ installed then you
-   can install it. If you are using the :ref:`conda-installation`)::
+   can install it. If you are using the :ref:`conda-installation`):
 
-     .. code-block:: bash
+   .. code-block:: bash
 
 	conda install -n mdaenv ipython
 
-   and if you are using the :ref:`pip-installation`::
+   and if you are using the :ref:`pip-installation`:
 
    .. code-block:: bash
 
