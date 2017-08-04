@@ -6,87 +6,39 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Working with AtomGroups &#8212; MDAnalysis Tutorial 1.0.2 documentation</title>
+    <title>Working with AtomGroups &#8212; MDAnalysis Tutorial 1.1.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.2',
+        VERSION:     '1.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="MDAnalysis Tutorial 1.0.2 documentation" href="index.html" />
     <link rel="next" title="Trajectory analysis" href="trajectories.html" />
-    <link rel="prev" title="Basics" href="basics.html" /> 
+    <link rel="prev" title="Basics" href="basics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
   </head>
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="trajectories.html" title="Trajectory analysis"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="basics.html" title="Basics"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/mdanalysistutorial-logo-200x150.png" alt="Logo"/>
-            </a></p>
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Working with AtomGroups</a><ul>
-<li><a class="reference internal" href="#important-methods-and-attributes-of-atomgroup">Important methods and attributes of AtomGroup</a></li>
-<li><a class="reference internal" href="#exercises-3">Exercises 3</a></li>
-<li><a class="reference internal" href="#processing-atomgroups">Processing AtomGroups</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="basics.html"
-                        title="previous chapter">Basics</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="trajectories.html"
-                        title="next chapter">Trajectory analysis</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/atomgroups.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -105,7 +57,7 @@ such as names, indices, or the coordinates in the
 <span class="go">(214, 3)</span>
 </pre></div>
 </div>
-<p>The resulting output is a <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.11)"><code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code></a>. The main purpose of
+<p>The resulting output is a <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.13)"><code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code></a>. The main purpose of
 MDAnalysis is to get trajectory data into numpy arrays!</p>
 <div class="section" id="important-methods-and-attributes-of-atomgroup">
 <h2>Important methods and attributes of AtomGroup<a class="headerlink" href="#important-methods-and-attributes-of-atomgroup" title="Permalink to this headline">¶</a></h2>
@@ -182,7 +134,7 @@ the three domains.</p>
 </div>
 <ul>
 <li><p class="first">What are the distances between the centers of mass?</p>
-<p>(Hint: you can use <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.norm.html#numpy.linalg.norm" title="(in NumPy v1.11)"><code class="xref py py-func docutils literal"><span class="pre">numpy.linalg.norm()</span></code></a> or calculate it
+<p>(Hint: you can use <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.norm.html#numpy.linalg.norm" title="(in NumPy v1.13)"><code class="xref py py-func docutils literal"><span class="pre">numpy.linalg.norm()</span></code></a> or calculate it
 manually.)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="k">import</span> <span class="n">norm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;CORE&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cm</span><span class="p">[</span><span class="s1">&#39;NMP&#39;</span><span class="p">]))</span>
@@ -212,7 +164,7 @@ manually.)</p>
 move relative to the CORE domain. The movement can be characterized by two
 angles, <span class="math">\(\theta_\text{NMP}\)</span> and <span class="math">\(\theta_\text{LID}\)</span>, which are
 defined between the <em>centers of geometry</em> of the <em>backbone and</em>
-<span class="math">\(\text{C}_\beta\)</span> atoms between groups of residues <a class="reference internal" href="index.html#beckstein2009" id="id1">[Beckstein2009]</a>:</p>
+<span class="math">\(\text{C}_\beta\)</span> atoms between groups of residues <a class="reference internal" href="references.html#beckstein2009" id="id1">[Beckstein2009]</a>:</p>
 <dl class="docutils">
 <dt>definition of <span class="math">\(\theta_\text{NMP}\)</span></dt>
 <dd>A: 115-125, B: 90-100, C: 35-55</dd>
@@ -350,26 +302,95 @@ hydration shell around a protein to a file</p>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logos/mdanalysistutorial-logo-200x150.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with AtomGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://mdanalysis.org">MDAnalysis</a></li>
+    
+    <li class="toctree-l1"><a href="http://docs.mdanalysis.org">docs</a></li>
+    
+    <li class="toctree-l1"><a href="http://wiki.mdanalysis.org">wiki</a></li>
+    
+    <li class="toctree-l1"><a href="http://users.mdanalysis.org">user discussion group</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/mdanalysis">GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://twitter.com/mdanalysis">@mdanalysis</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="basics.html" title="previous chapter">Basics</a></li>
+      <li>Next: <a href="trajectories.html" title="next chapter">Trajectory analysis</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="trajectories.html" title="Trajectory analysis"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="basics.html" title="Basics"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
-      </ul>
+    <div class="footer">
+      &copy;2015-2017, Oliver Beckstein.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/atomgroups.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2015, Oliver Beckstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
-    </div>
+
+    
+    <a href="https://github.com/MDAnalysis/mdanalysis" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
   </body>
 </html>

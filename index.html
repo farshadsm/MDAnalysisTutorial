@@ -6,79 +6,38 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>MDAnalysis Tutorial &#8212; MDAnalysis Tutorial 1.0.2 documentation</title>
+    <title>MDAnalysis Tutorial &#8212; MDAnalysis Tutorial 1.1.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.2',
+        VERSION:     '1.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="MDAnalysis Tutorial 1.0.2 documentation" href="#" />
-    <link rel="next" title="How to use this tutorial" href="howto.html" /> 
+    <link rel="next" title="How to use this tutorial" href="howto.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
   </head>
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="howto.html" title="How to use this tutorial"
-             accesskey="N">next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="#">
-              <img class="logo" src="_static/mdanalysistutorial-logo-200x150.png" alt="Logo"/>
-            </a></p>
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">MDAnalysis Tutorial</a><ul>
-<li><a class="reference internal" href="#contents">Contents</a></li>
-<li><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Next topic</h4>
-  <p class="topless"><a href="howto.html"
-                        title="next chapter">How to use this tutorial</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/index.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -92,18 +51,19 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">MDAnalysis version:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">≥ 0.11</td>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">≥ 0.16.2</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Tutorial release:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">1.0.2</td>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">1.1.0</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">Oct 06, 2016</td>
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">Aug 04, 2017</td>
 </tr>
 </tbody>
 </table>
 <p><a class="reference external" href="http://www.mdanalysis.org">MDAnalysis</a> is an open source Python library that helps you to quickly
 write your own analysis algorithm for studying trajectories produced
-by the most popular simulation packages <a class="reference internal" href="#michaud-agrawal2011" id="id1">[Michaud-Agrawal2011]</a>.</p>
+by the most popular simulation packages <a class="reference internal" href="references.html#gowers2016" id="id1">[Gowers2016]</a>
+<a class="reference internal" href="references.html#michaud-agrawal2011" id="id2">[Michaud-Agrawal2011]</a>.</p>
 <p>This tutorial serves as an <strong>introduction to MDAnalysis</strong>. It starts
 out with <em>installing the library</em> and then introduces the key components
 of the library. It will show you</p>
@@ -114,10 +74,10 @@ of the library. It will show you</p>
 interface of MDAnalysis;</li>
 <li>how to analyze MD trajectories;</li>
 <li>how to write out modified trajectories;</li>
-<li>how to use algorithms in the  <a class="reference external" href="https://pythonhosted.org/MDAnalysis/documentation_pages/analysis_modules.html">MDAnalysis.analysis</a> module
+<li>how to use algorithms in the  <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/analysis_modules.html">MDAnalysis.analysis</a> module
 (intermediate level of difficulty)</li>
 </ul>
-<p>The tutorial contains many links to the <a class="reference external" href="http://pythonhosted.org/MDAnalysis/">online documentation</a> ,
+<p>The tutorial contains many links to the <a class="reference external" href="http://docs.mdanalysis.org/">online documentation</a> ,
 which you can use to learn more about the functions, classes, an
 methods that are discussed. The online help together with the
 interactive Python documentation (<code class="docutils literal"><span class="pre">help(...)</span></code> or <code class="docutils literal"><span class="pre">...?</span></code> in
@@ -136,39 +96,9 @@ interactive Python documentation (<code class="docutils literal"><span class="pr
 <li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<table class="docutils citation" frame="void" id="michaud-agrawal2011" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[Michaud-Agrawal2011]</a></td><td>N. Michaud-Agrawal, E. J. Denning,
-T. B. Woolf, and O. Beckstein.  MDAnalysis: A Toolkit for the
-Analysis of Molecular Dynamics Simulations.
-<em>J. Comput. Chem.</em> <strong>32</strong> (2011), 2319–2327, doi:<a class="reference external" href="http://doi.org/10.1002/jcc.21787">10.1002/jcc.21787</a>
-PMCID:<a class="reference external" href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3144279">PMC3144279</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="beckstein2009" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Beckstein2009]</td><td>O Beckstein. EJ Denning, JR Perilla, and TB
-Woolf. Zipping and Unzipping of Adenylate Kinase: Atomistic
-Insights into the Ensemble of Open/Closed Transitions. <em>J Mol Biol</em>
-<strong>394</strong> (2009), 160–176. doi:<a class="reference external" href="http://doi.org/10.1016/j.jmb.2009.09.009">10.1016/j.jmb.2009.09.009</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="seyler2014" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Seyler2014]</td><td>L. Seyler and O. Beckstein. Sampling of large
-conformational transitions: Adenylate kinase as a testing
-ground. <em>Molec. Simul.</em> <strong>40</strong> (2014), 855–877. doi:
-<a class="reference external" href="http://doi.org/10.1080/08927022.2014.919497">10.1080/08927022.2014.919497</a>.</td></tr>
-</tbody>
-</table>
 </div>
 </div>
 
@@ -176,23 +106,94 @@ ground. <em>Molec. Simul.</em> <strong>40</strong> (2014), 855–877. doi:
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="#">
+    <img class="logo" src="_static/logos/mdanalysistutorial-logo-200x150.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://mdanalysis.org">MDAnalysis</a></li>
+    
+    <li class="toctree-l1"><a href="http://docs.mdanalysis.org">docs</a></li>
+    
+    <li class="toctree-l1"><a href="http://wiki.mdanalysis.org">wiki</a></li>
+    
+    <li class="toctree-l1"><a href="http://users.mdanalysis.org">user discussion group</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/mdanalysis">GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://twitter.com/mdanalysis">@mdanalysis</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="howto.html" title="next chapter">How to use this tutorial</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="howto.html" title="How to use this tutorial"
-             >next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
-      </ul>
+    <div class="footer">
+      &copy;2015-2017, Oliver Beckstein.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2015, Oliver Beckstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
-    </div>
+
+    
+    <a href="https://github.com/MDAnalysis/mdanalysis" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
   </body>
 </html>

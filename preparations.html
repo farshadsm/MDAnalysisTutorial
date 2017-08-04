@@ -6,86 +6,39 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Preparations &#8212; MDAnalysis Tutorial 1.0.2 documentation</title>
+    <title>Preparations &#8212; MDAnalysis Tutorial 1.1.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.2',
+        VERSION:     '1.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="MDAnalysis Tutorial 1.0.2 documentation" href="index.html" />
     <link rel="next" title="Basics" href="basics.html" />
-    <link rel="prev" title="Installing MDAnalysis" href="installation.html" /> 
+    <link rel="prev" title="Installing MDAnalysis" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
   </head>
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="basics.html" title="Basics"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="installation.html" title="Installing MDAnalysis"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/mdanalysistutorial-logo-200x150.png" alt="Logo"/>
-            </a></p>
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Preparations</a><ul>
-<li><a class="reference internal" href="#python-interpreter">Python interpreter</a></li>
-<li><a class="reference internal" href="#loading-mdanalysis">Loading MDAnalysis</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="installation.html"
-                        title="previous chapter">Installing MDAnalysis</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="basics.html"
-                        title="next chapter">Basics</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/preparations.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -108,7 +61,7 @@ autocomplete to <code class="code docutils literal"><span class="pre">MDAnalysis
 attributes.</p>
 </li>
 <li><p class="first">quick plotting with <code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code> (and array manipulations with
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.11)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a>)</p>
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.13)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a>)</p>
 </li>
 <li><p class="first">notebook mode (future versions of this tutorial will likely be
 provided as ipython notebooks): <code class="docutils literal"><span class="pre">ipython</span> <span class="pre">notebook</span> <span class="pre">--matplotlib=inline</span></code></p>
@@ -118,7 +71,7 @@ provided as ipython notebooks): <code class="docutils literal"><span class="pre"
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ipython</span>  <span class="o">--</span><span class="n">matplotlib</span>
 </pre></div>
 </div>
-<p>Inside <strong class="program">ipython</strong>, load <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.11)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a></p>
+<p>Inside <strong class="program">ipython</strong>, load <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.13)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
@@ -142,7 +95,7 @@ analysis modules such as <a class="reference external" href="http://pythonhosted
 imported explicitly.)</p>
 <p>MDAnalysis comes with a bunch of test files and trajectories. One is a
 trajectory of the enzyme adenylate kinase that samples a transition
-from a closed to an open conformation <a class="reference internal" href="index.html#beckstein2009" id="id1">[Beckstein2009]</a>, which we will
+from a closed to an open conformation <a class="reference internal" href="references.html#beckstein2009" id="id1">[Beckstein2009]</a>, which we will
 use as an example throughout the tutorial. The topology file (CHARMM
 PSF format) and trajectory (CHARMM DCD format) can be loaded into the
 variables <code class="code docutils literal"><span class="pre">PSF</span></code> and <code class="code docutils literal"><span class="pre">DCD</span></code>:</p>
@@ -156,26 +109,95 @@ variables <code class="code docutils literal"><span class="pre">PSF</span></code
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logos/mdanalysistutorial-logo-200x150.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preparations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://mdanalysis.org">MDAnalysis</a></li>
+    
+    <li class="toctree-l1"><a href="http://docs.mdanalysis.org">docs</a></li>
+    
+    <li class="toctree-l1"><a href="http://wiki.mdanalysis.org">wiki</a></li>
+    
+    <li class="toctree-l1"><a href="http://users.mdanalysis.org">user discussion group</a></li>
+    
+    <li class="toctree-l1"><a href="https://github.com/mdanalysis">GitHub</a></li>
+    
+    <li class="toctree-l1"><a href="https://twitter.com/mdanalysis">@mdanalysis</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installing MDAnalysis</a></li>
+      <li>Next: <a href="basics.html" title="next chapter">Basics</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="basics.html" title="Basics"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="installation.html" title="Installing MDAnalysis"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">MDAnalysis Tutorial 1.0.2 documentation</a> &#187;</li> 
-      </ul>
+    <div class="footer">
+      &copy;2015-2017, Oliver Beckstein.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/preparations.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2015, Oliver Beckstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
-    </div>
+
+    
+    <a href="https://github.com/MDAnalysis/mdanalysis" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
   </body>
 </html>
