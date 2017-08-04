@@ -152,9 +152,10 @@ tests ("ok" or just a single dot ".") or "KnownFailures".
            Otherwise, you will probably find that scripts cannot find
            MDAnalysis.
 
-	   If you want to use ``ipython`` or ``jupyter notebook`` then
-	   you *must* install them into the same virtual environment
-	   or they might not properly find other installed libraries
-	   such as MDAnalysis.
+	   If you want to use ``ipython`` (see
+	   :ref:`ipython-interpreter`) or ``jupyter notebook`` then
+	   you *must* install ``ipython`` and ``jupyter`` *into the
+	   same virtual environment as MDAnalysis* or they might not
+	   properly find other installed libraries such as MDAnalysis.
 	    
 .. highlight:: python

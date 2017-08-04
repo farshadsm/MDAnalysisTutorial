@@ -24,12 +24,14 @@ can
 
 * follow the tutorial online in your browser, starting with the
   chapter :ref:`chapter-basics`, or
-* use the Jupyter ipython notebook `MDAnalysisTutorial.ipynb`_ (which
-  contains all the code and exercises but fewer hyperlinks and images
-  and less explanatory text). `Download the notebook`_ and open it
-  with :program:`ipython`::
 
-     ipython notebook MDAnalysisTutorial.ipynb
+.. RESTORE WHEN THE notebook HAS BEEN UPDATED
+   * use the Jupyter ipython notebook `MDAnalysisTutorial.ipynb`_ (which
+     contains all the code and exercises but fewer hyperlinks and images
+     and less explanatory text). `Download the notebook`_ and open it
+     with :program:`ipython`::
+
+	jupyter notebook MDAnalysisTutorial.ipynb
 
 .. _MDAnalysis: http://mdanalysis.org
 .. _MDAnalysisTutorial.ipynb:

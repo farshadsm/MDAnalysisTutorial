@@ -6,11 +6,13 @@
  Preparations
 ==============
 
-Python interpreter
-==================
+.. _ipython-interpreter:
+
+Python interpreter: ``ipython``
+===============================
 
 In the following we are using `ipython`_ as our interactive Python
-interpreter. It has a number of very useful features:
+interpreter [#ipython_install]_. It has a number of very useful features:
 
 * use the interactive help (:samp:`{command}?` or
   :samp:`{command}??`)
@@ -23,9 +25,6 @@ interpreter. It has a number of very useful features:
 
 * quick plotting with :mod:`matplotlib` (and array manipulations with
   :mod:`numpy`)
-
-* notebook mode (future versions of this tutorial will likely be
-  provided as ipython notebooks): ``ipython notebook --matplotlib=inline``
 
 Start :program:`ipython`::
 
@@ -67,4 +66,20 @@ PSF format) and trajectory (CHARMM DCD format) can be loaded into the
 variables :code:`PSF` and :code:`DCD`::
 
   from MDAnalysis.tests.datafiles import PSF, DCD
+
+
+.. rubric:: Footnotes
+
+.. [#ipython_install] If you do not have ipython_ installed then you
+   can install it. If you are using the :ref:`conda-installation`)::
+
+     .. code-block:: bash
+
+	conda install -n mdaenv ipython
+
+   and if you are using the :ref:`pip-installation`::
+
+   .. code-block:: bash
+
+	pip install --user ipython
 
