@@ -58,7 +58,7 @@ un-changing properties do the atoms possess (such as partial charge),
 </div>
 <p>The standard way to assess each time step (or frame) in a trajectory
 is to <em>iterate</em> over the <code class="xref py py-attr docutils literal"><span class="pre">Universe.trajectory</span></code> attribute (which
-is an instance of <a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">Reader</span></code></a> class):</p>
+is an instance of <code class="xref py py-class docutils literal"><span class="pre">Reader</span></code> class):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frame: </span><span class="si">%5d</span><span class="s2">, Time: </span><span class="si">%8.3f</span><span class="s2"> ps&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rgyr: </span><span class="si">%g</span><span class="s2"> A&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">(),</span> <span class="p">))</span>
@@ -66,7 +66,7 @@ is an instance of <a class="reference external" href="http://pythonhosted.org/MD
 </div>
 <p>The <code class="xref py py-attr docutils literal"><span class="pre">time</span></code> attribute
 contains the <em>current time step</em>. The
-<a class="reference external" href="http://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.Reader" title="(in MDAnalysis v0.15)"><code class="xref py py-class docutils literal"><span class="pre">Reader</span></code></a> <strong>only contains
+<code class="xref py py-class docutils literal"><span class="pre">Reader</span></code> <strong>only contains
 information about one time step</strong>: imagine a cursor or pointer moving
 along the trajectory file. Where the cursor points, there&#8217;s you
 current coordinates, frame number, and time.</p>
