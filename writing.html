@@ -48,7 +48,7 @@
   <div class="section" id="writing-coordinates">
 <h1>Writing coordinates<a class="headerlink" href="#writing-coordinates" title="Permalink to this headline">¶</a></h1>
 <p>MDAnalysis also supports writing of data in a range of file formats
-(see the <a class="reference external" href="https://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/init.html#id1">Table of supported coordinate formats</a> for
+(see the <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/coordinates/init.html#id1">Table of supported coordinate formats</a> for
 details). MDAnalysis supports both <em>single frame</em> writers (such as a
 simple PDB or GRO file) and <em>trajectory</em> writers (e.g. XTC, DCD, but
 also multi-frame PDB files).</p>
@@ -60,14 +60,17 @@ single frame is to use the
 <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.AtomGroup" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a> as already also shown under
 <a class="reference internal" href="atomgroups.html#processing-atomgroups"><span class="std std-ref">Processing AtomGroups</span></a>. For instance, to only write out the
 protein without solvent to a file in GRO format:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PDB</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MDAnalysis.tests.datafiles</span> <span class="k">import</span> <span class="n">PDB</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PDB</span><span class="p">)</span>
 <span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
 <span class="n">protein</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;protein.gro&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>MDAnalysis uses the file suffix to determine the output file format
 (unless the <em>format</em> keyword is specified) and will raise an exception
-if it is not suitable for single frame writing.</p>
+if it is not suitable for single frame writing (see the <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/coordinates/init.html#id1">Table of
+supported coordinate formats</a> for details).</p>
 </div>
 <div class="section" id="trajectories">
 <span id="writing-trajectories"></span><h2>Trajectories<a class="headerlink" href="#trajectories" title="Permalink to this headline">¶</a></h2>
@@ -114,13 +117,12 @@ structure. A common approach is to save scalar values in the B-factor
 field of a PDB file and then color atoms by B-factor (also known as
 temperature factor or just &#8220;beta&#8221;).</p>
 <p>The following example computes the shift of each atom in AdK relative
-to a reference structure (line 23). We take as reference the closed
+to a reference structure (line 29). We take as reference the closed
 conformation (after a structural superposition on the CORE domain with
 <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/analysis/align.html#MDAnalysis.analysis.align.alignto" title="(in MDAnalysis v0.16)"><code class="xref py py-func docutils literal"><span class="pre">alignto()</span></code></a>). The shifts are written
-into the B-factor with the
-<code class="xref py py-meth docutils literal"><span class="pre">set_bfactor()</span></code> method of
-<a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.AtomGroup" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a>. Each frame is written
-out as part of a multi-frame PDB file:</p>
+into the <code class="xref py py-attr docutils literal"><span class="pre">AtomGroup.tempfactors</span></code> (&#8220;B-factor&#8221;) array of
+the <code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code> <a class="footnote-reference" href="#addattribute" id="id1">[1]</a>. Each frame is written out as part of a
+multi-frame PDB file:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -150,7 +152,13 @@ out as part of a multi-frame PDB file:</p>
 27
 28
 29
-30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># project a dynamic property on the structure using the B-factor field</span>
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># project a dynamic property on the structure using the B-factor (tempfactor) field</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">MDAnalysis</span>
@@ -162,10 +170,16 @@ out as part of a multi-frame PDB file:</p>
 <span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span><span class="p">)</span>
 <span class="n">ref</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span><span class="p">)</span>  <span class="c1"># copy of u</span>
 
-<span class="n">CORE_selection</span> <span class="o">=</span> <span class="s2">&quot;resid 1:29 or resid 60:121 or resid 160:214&quot;</span>
+<span class="n">CORE_selection</span> <span class="o">=</span> <span class="s2">&quot;resid 1-29 or resid 60-121 or resid 160-214&quot;</span>
 <span class="n">pdbtrj</span> <span class="o">=</span> <span class="s2">&quot;adk_distance_bfac.pdb&quot;</span>
 
-<span class="k">with</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">pdbtrj</span><span class="p">,</span> <span class="n">multiframe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bonds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_atoms</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">n_atoms</span><span class="p">)</span> <span class="k">as</span> <span class="n">PDB</span><span class="p">:</span>
+
+<span class="c1"># workaround for Issue #1359 https://github.com/MDAnalysis/mdanalysis/issues/1359</span>
+<span class="c1"># which will be fixed in 0.17.0</span>
+<span class="hll"><span class="n">u</span><span class="o">.</span><span class="n">add_TopologyAttr</span><span class="p">(</span><span class="n">MDAnalysis</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">topologyattrs</span><span class="o">.</span><span class="n">Tempfactors</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">))))</span>
+</span>
+
+<span class="k">with</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">pdbtrj</span><span class="p">,</span> <span class="n">multiframe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bonds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_atoms</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">n_atoms</span><span class="p">)</span> <span class="k">as</span> <span class="n">PDB</span><span class="p">:</span>
     <span class="c1"># reference coordinates: set to first frame</span>
     <span class="n">ref</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1"># iterate through our trajectory</span>
@@ -173,8 +187,8 @@ out as part of a multi-frame PDB file:</p>
         <span class="c1"># superimpose on the reference CORE (at t=0)</span>
 <span class="hll">        <span class="n">rmsd</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">align</span><span class="o">.</span><span class="n">alignto</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">,</span> <span class="n">ref</span><span class="o">.</span><span class="n">atoms</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="n">CORE_selection</span><span class="p">)</span>
 </span><span class="hll">        <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">positions</span> <span class="o">-</span> <span class="n">ref</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">positions</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</span>        <span class="c1"># project displacement on structure via bfactor field</span>
-<span class="hll">        <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">set_bfactors</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+</span>        <span class="c1"># project displacement on structure via bfactor (&quot;tempfactor&quot;) field</span>
+<span class="hll">        <span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">tempfactors</span> <span class="o">=</span> <span class="n">distances</span>
 </span><span class="hll">        <span class="n">PDB</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span>
 </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frame </span><span class="si">{0}</span><span class="s2">: CORE RMSD before/after superposition: </span><span class="si">{1[0]:.1f}</span><span class="s2"> / </span><span class="si">{1[1]:.1f}</span><span class="s2"> A. &quot;</span>
               <span class="s2">&quot;min-max displacement: </span><span class="si">{2:.1f}</span><span class="s2">...</span><span class="si">{3:.1f}</span><span class="s2"> A&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">rmsd</span><span class="p">,</span> <span class="n">distances</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">distances</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
@@ -191,7 +205,7 @@ the VMD Tcl commandline:</p>
 <p>Rendered snapshots from the beginning, middle, and end of the
 trajectroy are shown below. Note that the tip of the LID domain moves
 by almost 25 Å, which provides some justification for calling the AdK
-closed/open transition a &#8220;large conformational change&#8221; <a class="reference internal" href="references.html#seyler2014" id="id1">[Seyler2014]</a>.</p>
+closed/open transition a &#8220;large conformational change&#8221; <a class="reference internal" href="references.html#seyler2014" id="id2">[Seyler2014]</a>.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -294,6 +308,29 @@ slightly modified for this tutorial:</p>
 <code class="docutils literal"><span class="pre">User</span></code> field in <a class="reference external" href="http://www.ks.uiuc.edu/Research/vmd/">VMD</a>; this is demonstrated in
 <a class="reference external" href="https://github.com/MDAnalysis/MDAnalysisTutorial/blob/master/doc/sphinx/code/vmduser.py">vmduser.py</a>.</p>
 </div>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="addattribute" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">The <code class="xref py py-attr docutils literal"><span class="pre">AtomGroup.tempfactors</span></code> attribute only
+exists when a structure is read from a PDB
+file. Here we load a structure from a PSF topology
+file which does not define
+<code class="xref py py-attr docutils literal"><span class="pre">tempfactors</span></code>. Therefore, we first have to
+manually add it with the line</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">.</span><span class="n">add_TopologyAttr</span><span class="p">(</span><span class="n">MDAnalysis</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">topologyattrs</span><span class="o">.</span><span class="n">Tempfactors</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">))))</span>
+</pre></div>
+</div>
+<p>It initializes <code class="xref py py-attr docutils literal"><span class="pre">u.atoms.tempfactors</span></code>
+to be zero for all atoms. We can then later fill
+the <code class="xref py py-attr docutils literal"><span class="pre">u.atoms.tempfactors</span></code> array with
+arbitrary values.</p>
+<p class="last">Starting with MDAnalysis 0.17.0, the explicit
+adding of commonly used topology attributes will
+not be necessary any more (see Issue <a class="reference external" href="https://github.com/MDAnalysis/mdanalysis/issues/1359">#1359</a>).</p>
+</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -328,7 +365,11 @@ slightly modified for this tutorial:</p>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing coordinates</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#single-frames">Single frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trajectories">Trajectories</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>

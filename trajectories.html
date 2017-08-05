@@ -47,21 +47,29 @@
             
   <div class="section" id="trajectory-analysis">
 <h1>Trajectory analysis<a class="headerlink" href="#trajectory-analysis" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">Universe</span></code> binds together the
+<p>The <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/universe.html#MDAnalysis.core.universe.Universe" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a> binds together the
 static <strong>topology</strong> (which atoms, how are they connected, what
 un-changing properties do the atoms possess (such as partial charge),
 ...) and the changing coordinate information, which is stored in the
 <strong>trajectory</strong>.</p>
 <p>The length of a trajectory (number of frames) is</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">)</span>
+<span class="go">98</span>
 </pre></div>
 </div>
 <p>The standard way to assess each time step (or frame) in a trajectory
 is to <em>iterate</em> over the <code class="xref py py-attr docutils literal"><span class="pre">Universe.trajectory</span></code> attribute (which
 is an instance of <code class="xref py py-class docutils literal"><span class="pre">Reader</span></code> class):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frame: </span><span class="si">%5d</span><span class="s2">, Time: </span><span class="si">%8.3f</span><span class="s2"> ps&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rgyr: </span><span class="si">%g</span><span class="s2"> A&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">(),</span> <span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frame: </span><span class="si">{0:5d}</span><span class="s2">, Time: </span><span class="si">{1:8.3f}</span><span class="s2"> ps&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">))</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rgyr: </span><span class="si">{0:g}</span><span class="s2"> A&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">()))</span>
+
+<span class="go">Frame:     0, Time:    0.000 ps</span>
+<span class="go">Rgyr: 16.669 A</span>
+<span class="go">Frame:     1, Time:    1.000 ps</span>
+<span class="go">Rgyr: 16.6732 A</span>
+<span class="go">Frame:     2, Time:    2.000 ps</span>
+<span class="gp">...</span>
 </pre></div>
 </div>
 <p>The <code class="xref py py-attr docutils literal"><span class="pre">time</span></code> attribute
@@ -78,20 +86,6 @@ current coordinates, frame number, and time.</p>
 <span class="n">Rgyr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Rgyr</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>It is important to note that the coordinates and related properties
-calculated from the coordinates such as the radius of gyration
-<em>change</em> while <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html">selections</a> on static properties (such as
-<code class="code docutils literal"><span class="pre">protein</span></code> in the example) do not change when moving through a
-trajectory: You can define the selection <em>once</em> and then
-recalculate the property of interest for each frame of the
-trajectory.</p>
-<p class="last">However, if selections contain distance-dependent queries (such as
-<code class="docutils literal"><span class="pre">around</span></code> or <code class="docutils literal"><span class="pre">point</span></code>, see <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords">selection keywords</a> for more
-details) then one might have to recalculate the selection for each
-time step and one would put it inside the loop over frames.</p>
-</div>
 <p>The data can be plotted to give the graph below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># quick plot</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -107,6 +101,21 @@ time step and one would put it inside the loop over frames.</p>
 the AdK enzyme.</p>
 <a class="reference internal image-reference" href="_images/Rgyr.svg"><div align="center" class="align-center"><img alt="_images/Rgyr.svg" src="_images/Rgyr.svg" width="40%" /></div>
 </a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>It is important to note that the coordinates and related properties
+calculated from the coordinates such as the radius of gyration
+<em>change</em> while <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html">selections</a> on static properties (such as
+<code class="code docutils literal"><span class="pre">protein</span></code> in the example) do not change when moving through a
+trajectory: You can define the selection <em>once</em> and then
+recalculate the property of interest for each frame of the
+trajectory.</p>
+<p class="last">However, if selections contain distance-dependent queries (such as
+<code class="docutils literal"><span class="pre">around</span></code> or <code class="docutils literal"><span class="pre">point</span></code>, see <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords">selection keywords</a> for more
+details) then the selection should be <em>updated for each time step</em>
+using a <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html#dynamic-selections">dynamic selection</a> (also known as an &#8220;updating
+selection&#8221;) by setting the keyword <code class="docutils literal"><span class="pre">updating=True</span></code>.</p>
+</div>
 <div class="section" id="exercises-4">
 <h2>Exercises 4<a class="headerlink" href="#exercises-4" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
@@ -117,9 +126,9 @@ the AdK enzyme.</p>
 
 <span class="k">def</span> <span class="nf">theta_NMP</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the NMP-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115:125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 90:100 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 35:55 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115-125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 90-100 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 35-55 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">BC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">BA</span><span class="p">,</span> <span class="n">BC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">BC</span><span class="p">)))</span>
@@ -127,9 +136,9 @@ the AdK enzyme.</p>
 
 <span class="k">def</span> <span class="nf">theta_LID</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the LID-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 179:185 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115:125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 125:153 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 179-185 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115-125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 125-153 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">BC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">BA</span><span class="p">,</span> <span class="n">BC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">BC</span><span class="p">)))</span>
@@ -213,9 +222,9 @@ the AdK enzyme.</p>
 
 <span class="k">def</span> <span class="nf">theta_NMP</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the NMP-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115:125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 90:100 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 35:55 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115-125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 90-100 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 35-55 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">BC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">BA</span><span class="p">,</span> <span class="n">BC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">BC</span><span class="p">)))</span>
@@ -223,9 +232,9 @@ the AdK enzyme.</p>
 
 <span class="k">def</span> <span class="nf">theta_LID</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the LID-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 179:185 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115:125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 125:153 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 179-185 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115-125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 125-153 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">BC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">BA</span><span class="p">,</span> <span class="n">BC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">BC</span><span class="p">)))</span>
@@ -285,12 +294,12 @@ to calculate the angle</p>
 <div class="section" id="bells-and-whistles">
 <h2>Bells and whistles<a class="headerlink" href="#bells-and-whistles" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Quick data acquisition</p>
-<p>Especially useful for interactive analysis in <strong class="program">ipython
---pylab</strong> using list comprehensions (implicit for loops):</p>
+<p>Especially useful for interactive analysis in <strong class="program">ipython</strong> using
+list comprehensions (implicit for loops):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">protein</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">protein</span><span class="o">.</span><span class="n">radius_of_gyration</span><span class="p">())</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">trajectory</span><span class="p">])</span>
 <span class="n">time</span><span class="p">,</span> <span class="n">RG</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">RG</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">RG</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">More on the trajectory iterator</p>
@@ -360,7 +369,11 @@ interesting ways to work with trajectory iterators.</p>
 <li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Trajectory analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Trajectory analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercises-4">Exercises 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bells-and-whistles">Bells and whistles</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>

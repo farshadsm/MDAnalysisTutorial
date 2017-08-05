@@ -61,7 +61,7 @@ class <a class="reference external" href="http://www.mdanalysis.org/docs/documen
 loading a <strong>topology</strong> (list of atoms and possibly their connectivity)
 together with a <strong>trajectory</strong> (coordinate information) into the
 central data structure, the
-<code class="xref py py-class docutils literal"><span class="pre">Universe</span></code> object:</p>
+<a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/universe.html#MDAnalysis.core.universe.Universe" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a> object:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 <span class="go">&lt;Universe with 3341 atoms&gt;</span>
@@ -69,7 +69,7 @@ central data structure, the
 </div>
 <p>The atoms are stored in the attribute
 <code class="xref py py-attr docutils literal"><span class="pre">atoms</span></code> of the
-<code class="xref py py-class docutils literal"><span class="pre">MDAnalysis.core.groups.Universe</span></code>:</p>
+<a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/universe.html#MDAnalysis.core.universe.Universe" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">MDAnalysis.core.universe.Universe</span></code></a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span>
 <span class="go">&lt;AtomGroup with 3341 atoms&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -196,8 +196,8 @@ object interactively with <code class="kbd docutils literal"><span class="pre">T
 <span id="id2"></span><h2>Selections<a class="headerlink" href="#selections" title="Permalink to this headline">¶</a></h2>
 <p>MDAnalysis comes with a fairly complete <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html">atom selection</a>
 facility. Primarily, one uses the method
-<code class="xref py py-meth docutils literal"><span class="pre">select_atoms()</span></code> of a
-<code class="xref py py-class docutils literal"><span class="pre">Universe</span></code>:</p>
+<a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/universe.html#MDAnalysis.core.universe.Universe.select_atoms" title="(in MDAnalysis v0.16)"><code class="xref py py-meth docutils literal"><span class="pre">select_atoms()</span></code></a> of a
+<a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/universe.html#MDAnalysis.core.universe.Universe" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein and name CA&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">AtomGroup</span> <span class="k">with</span> <span class="mi">214</span> <span class="n">atoms</span><span class="o">&gt;</span>
@@ -220,9 +220,39 @@ facility. Primarily, one uses the method
 <p class="first admonition-title">See also</p>
 <p class="last">All the <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords">selection keywords</a> are described in the documentation.</p>
 </div>
-<p>Selections can be combined with boolean expression and it is also
-possible to select by geometric criteria, e.g. with the <code class="samp docutils literal"><span class="pre">around</span>
-<em><span class="pre">distance</span></em> <em><span class="pre">selection</span></em></code> keyword:</p>
+<p>Numerical <strong>ranges</strong> can be written as <code class="docutils literal"><span class="pre">first-last</span></code> (or equivalently
+<code class="docutils literal"><span class="pre">first:last</span></code> <a class="footnote-reference" href="#ranges" id="id3">[1]</a>), where the range is <em>inclusive</em>. For example, get
+residues with residue IDs 5 to 100:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 5-100&quot;</span><span class="p">)</span>
+<span class="go">&lt;AtomGroup with 1439 atoms&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 5-100&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">n_residues</span>
+<span class="go">96</span>
+</pre></div>
+</div>
+<p>Selections can be combined with <a class="reference external" href="http://www.mdanalysis.org/docs//documentation_pages/selections.html#boolean">boolean expressions</a>. For example,
+to select the <span class="math">\(\text{C}_\alpha\)</span> atoms of all acidic residues
+[aspartic acid (&#8220;ASP&#8221;), glutamic acid (&#8220;GLU&#8221;), and histidines (named
+&#8220;HIS&#8221;, &#8220;HSD&#8221;, or &#8220;HSE&#8221;, depending on what force field is being used
+and what protonation state it is in)]:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;(resname ASP or resname GLU or resname HS*) and name CA&quot;</span><span class="p">)</span>
+<span class="go">&lt;AtomGroup with 38 atoms&gt;</span>
+</pre></div>
+</div>
+<p>We group with <code class="docutils literal"><span class="pre">or</span></code> separate selections by residue name (keyword
+<code class="docutils literal"><span class="pre">resname</span></code>). First either ASP, GLU, or any histidines are selected
+(we use &#8220;stemming&#8221; <code class="docutils literal"><span class="pre">HS*</span></code> to match any residue name that starts with
+&#8220;HS&#8221;).  Then only those atoms whose name is &#8220;CA&#8221; are taken from the
+first set by an <code class="docutils literal"><span class="pre">and</span></code> selection. For convenience, the <code class="docutils literal"><span class="pre">or</span></code> in the
+first part of the selection can be taken implicitly with the shortcut
+syntax</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resname ASP GLU HS* and name CA&quot;</span><span class="p">)</span>
+<span class="go">&lt;AtomGroup with 38 atoms&gt;</span>
+</pre></div>
+</div>
+<p>The <em>implicit or</em> syntax also works well for range selections such as
+<code class="docutils literal"><span class="pre">resid</span> <span class="pre">1-5</span> <span class="pre">20</span> <span class="pre">45-99</span> <span class="pre">101-199</span></code>.</p>
+<p>It is also possible to select by <a class="reference external" href="http://www.mdanalysis.org/docs//documentation_pages/selections.html#geometric">geometric criteria</a>, e.g. with the
+<code class="samp docutils literal"><span class="pre">around</span> <em><span class="pre">distance</span></em> <em><span class="pre">selection</span></em></code> keyword:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;((resname ASP or resname GLU) and not (backbone or name CB or name CG)) </span><span class="se">\</span>
 <span class="go">                 and around 4.0 ((resname LYS or resname ARG) \</span>
 <span class="go">                                  and not (backbone or name CB or name CG))&quot;).residues</span>
@@ -273,6 +303,19 @@ groups element-wise:</p>
 </div>
 </li>
 </ol>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="ranges" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>For index ranges in atom selections, <code class="docutils literal"><span class="pre">first-last</span></code> and
+<code class="docutils literal"><span class="pre">first:last</span></code> are completely equivalent. In this
+tutorial we prefer the form <code class="docutils literal"><span class="pre">first-last</span></code> to reduce
+confusion with Python slicing <code class="docutils literal"><span class="pre">group[first:last]</span></code>
+because in the atom selection syntax, <code class="docutils literal"><span class="pre">last</span></code> is
+<em>included</em> in the selection whereas in Python slicing it
+is <em>excluded</em>.</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -304,7 +347,11 @@ groups element-wise:</p>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#universe-and-atomgroup">Universe and AtomGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selections">Selections</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>

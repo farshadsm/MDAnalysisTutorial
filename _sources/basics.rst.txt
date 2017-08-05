@@ -25,15 +25,15 @@ class :class:`MDAnalysis.core.groups.Atom`), which are grouped in
 loading a **topology** (list of atoms and possibly their connectivity)
 together with a **trajectory** (coordinate information) into the
 central data structure, the
-:class:`~MDAnalysis.core.groups.Universe` object::
+:class:`~MDAnalysis.core.universe.Universe` object::
 
   >>> u = MDAnalysis.Universe(PSF, DCD)
   >>> print(u)
   <Universe with 3341 atoms>
 
 The atoms are stored in the attribute
-:attr:`~MDAnalysis.core.groups.Universe.atoms` of the
-:class:`MDAnalysis.core.groups.Universe`::
+:attr:`~MDAnalysis.core.universe.Universe.atoms` of the
+:class:`MDAnalysis.core.universe.Universe`::
 
   >>> print(u.atoms)
   <AtomGroup with 3341 atoms>
@@ -163,8 +163,8 @@ Selections
 
 MDAnalysis comes with a fairly complete `atom selection`_
 facility. Primarily, one uses the method
-:meth:`~MDAnalysis.core.groups.Universe.select_atoms` of a
-:class:`~MDAnalysis.core.groups.Universe`::
+:meth:`~MDAnalysis.core.universe.Universe.select_atoms` of a
+:class:`~MDAnalysis.core.universe.Universe`::
 
   >>> CA = u.select_atoms("protein and name CA")
   >>> CA
@@ -185,9 +185,41 @@ but really any :class:`~MDAnalysis.core.groups.AtomGroup` has a
   
 .. SeeAlso:: All the `selection keywords`_ are described in the documentation.
 
-Selections can be combined with boolean expression and it is also
-possible to select by geometric criteria, e.g. with the :samp:`around
-{distance} {selection}` keyword::
+Numerical **ranges** can be written as ``first-last`` (or equivalently
+``first:last`` [#ranges]_), where the range is *inclusive*. For example, get
+residues with residue IDs 5 to 100::
+
+  >>> u.select_atoms("resid 5-100")
+  <AtomGroup with 1439 atoms>
+  >>> u.select_atoms("resid 5-100").n_residues
+  96
+  
+Selections can be combined with `boolean expressions`_. For example,
+to select the :math:`\text{C}_\alpha` atoms of all acidic residues
+[aspartic acid ("ASP"), glutamic acid ("GLU"), and histidines (named
+"HIS", "HSD", or "HSE", depending on what force field is being used
+and what protonation state it is in)]:
+
+  >>> u.select_atoms("(resname ASP or resname GLU or resname HS*) and name CA")
+  <AtomGroup with 38 atoms>
+
+We group with ``or`` separate selections by residue name (keyword
+``resname``). First either ASP, GLU, or any histidines are selected
+(we use "stemming" ``HS*`` to match any residue name that starts with
+"HS").  Then only those atoms whose name is "CA" are taken from the
+first set by an ``and`` selection. For convenience, the ``or`` in the
+first part of the selection can be taken implicitly with the shortcut
+syntax
+
+  >>> u.select_atoms("resname ASP GLU HS* and name CA")
+  <AtomGroup with 38 atoms>
+
+The *implicit or* syntax also works well for range selections such as
+``resid 1-5 20 45-99 101-199``.
+
+  
+It is also possible to select by `geometric criteria`_, e.g. with the
+:samp:`around {distance} {selection}` keyword::
 
   >>> u.select_atoms("((resname ASP or resname GLU) and not (backbone or name CB or name CG)) \
                    and around 4.0 ((resname LYS or resname ARG) \
@@ -197,6 +229,13 @@ possible to select by geometric criteria, e.g. with the :samp:`around
 This selection will find atoms potentially involved in salt bridges
 between acidic and basic residues.
 
+.. _boolean expressions:
+   http://www.mdanalysis.org/docs//documentation_pages/selections.html#boolean
+
+.. _geometric criteria:
+   http://www.mdanalysis.org/docs//documentation_pages/selections.html#geometric   
+
+   
 
 Exercises 2
 -----------
@@ -248,3 +287,13 @@ Exercises 2
 .. _selection keywords:
    http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords
 
+   
+.. rubric:: Footnotes
+
+.. [#ranges] For index ranges in atom selections, ``first-last`` and
+             ``first:last`` are completely equivalent. In this
+             tutorial we prefer the form ``first-last`` to reduce
+             confusion with Python slicing ``group[first:last]``
+             because in the atom selection syntax, ``last`` is
+             *included* in the selection whereas in Python slicing it
+             is *excluded*.

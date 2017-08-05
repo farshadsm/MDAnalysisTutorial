@@ -42,12 +42,16 @@ If you have **questions or suggestions** please post them in the
 .. _MDAnalysis.analysis: http://docs.mdanalysis.org/documentation_pages/analysis_modules.html
 .. _MDAnalysis User Discussion Group: http://groups.google.com/group/mdnalysis-discussion
 
+Begin the tutorial with :doc:`howto` and use the *sidebar* for navigation.
 
-Contents
---------
+.. Contents
+.. --------
+..
+.. Alabaster includes the TOC as a collapsible sidebar. Hide it here.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
+   :hidden:	      
 
    howto
    installation

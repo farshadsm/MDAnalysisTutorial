@@ -4,7 +4,7 @@
  Trajectory analysis
 =====================
 
-The :class:`~MDAnalysis.core.groups.Universe` binds together the
+The :class:`~MDAnalysis.core.universe.Universe` binds together the
 static **topology** (which atoms, how are they connected, what
 un-changing properties do the atoms possess (such as partial charge),
 ...) and the changing coordinate information, which is stored in the
@@ -12,16 +12,24 @@ un-changing properties do the atoms possess (such as partial charge),
 
 The length of a trajectory (number of frames) is ::
 
-  len(u.trajectory)
+  >>> len(u.trajectory)
+  98
 
 The standard way to assess each time step (or frame) in a trajectory
 is to *iterate* over the :attr:`Universe.trajectory` attribute (which
 is an instance of :class:`~MDAnalysis.coordinates.base.Reader` class)::
 
-  for ts in u.trajectory:
-      print("Frame: %5d, Time: %8.3f ps" % (ts.frame, u.trajectory.time))
-      print("Rgyr: %g A" % (u.atoms.radius_of_gyration(), ))
-
+  >>> for ts in u.trajectory:
+  ...    print("Frame: {0:5d}, Time: {1:8.3f} ps".format(ts.frame, u.trajectory.time))
+  ...    print("Rgyr: {0:g} A".format(u.atoms.radius_of_gyration()))
+  
+  Frame:     0, Time:    0.000 ps
+  Rgyr: 16.669 A
+  Frame:     1, Time:    1.000 ps
+  Rgyr: 16.6732 A
+  Frame:     2, Time:    2.000 ps  
+  ...
+  
 The :attr:`~MDAnalysis.coordinates.base.Reader.time` attribute
 contains the *current time step*. The
 :class:`~MDAnalysis.coordinates.base.Reader` **only contains
@@ -36,28 +44,7 @@ Normally you will collect the data in a list or array, e.g. ::
   for ts in u.trajectory:
      Rgyr.append((u.trajectory.time, protein.radius_of_gyration()))
   Rgyr = np.array(Rgyr)
-
-.. Note:: 
-
-   It is important to note that the coordinates and related properties
-   calculated from the coordinates such as the radius of gyration
-   *change* while selections_ on static properties (such as
-   :code:`protein` in the example) do not change when moving through a
-   trajectory: You can define the selection *once* and then
-   recalculate the property of interest for each frame of the
-   trajectory.
-
-   However, if selections contain distance-dependent queries (such as
-   ``around`` or ``point``, see `selection keywords`_ for more
-   details) then one might have to recalculate the selection for each
-   time step and one would put it inside the loop over frames.
-
-.. _selections: 
-   http://docs.mdanalysis.org/documentation_pages/selections.html
-
-.. _selection keywords:
-   http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords
-
+   
 The data can be plotted to give the graph below::
 
   # quick plot
@@ -76,6 +63,32 @@ the AdK enzyme.
    :width: 40%
    :align: center
 
+.. Note:: 
+
+   It is important to note that the coordinates and related properties
+   calculated from the coordinates such as the radius of gyration
+   *change* while selections_ on static properties (such as
+   :code:`protein` in the example) do not change when moving through a
+   trajectory: You can define the selection *once* and then
+   recalculate the property of interest for each frame of the
+   trajectory.
+
+   However, if selections contain distance-dependent queries (such as
+   ``around`` or ``point``, see `selection keywords`_ for more
+   details) then the selection should be *updated for each time step*
+   using a `dynamic selection`_ (also known as an "updating
+   selection") by setting the keyword ``updating=True``.
+   
+
+.. _selections: 
+   http://docs.mdanalysis.org/documentation_pages/selections.html
+
+.. _selection keywords:
+   http://docs.mdanalysis.org/documentation_pages/selections.html#selection-keywords
+
+.. _dynamic selection:
+   http://docs.mdanalysis.org/documentation_pages/selections.html#dynamic-selections
+	   
 
 
 Exercises 4
@@ -89,9 +102,9 @@ Exercises 4
 
       def theta_NMP(u):
 	  """Calculate the NMP-CORE angle for E. coli AdK in degrees"""
-	  C = u.select_atoms("resid 115:125 and (backbone or name CB)").center_of_geometry()
-	  B = u.select_atoms("resid 90:100 and (backbone or name CB)").center_of_geometry()
-	  A = u.select_atoms("resid 35:55 and (backbone or name CB)").center_of_geometry()
+	  C = u.select_atoms("resid 115-125 and (backbone or name CB)").center_of_geometry()
+	  B = u.select_atoms("resid 90-100 and (backbone or name CB)").center_of_geometry()
+	  A = u.select_atoms("resid 35-55 and (backbone or name CB)").center_of_geometry()
 	  BA = A - B
 	  BC = C - B
 	  theta = np.arccos(np.dot(BA, BC)/(norm(BA)*norm(BC)))
@@ -99,9 +112,9 @@ Exercises 4
 
       def theta_LID(u):
 	  """Calculate the LID-CORE angle for E. coli AdK in degrees"""
-	  C = u.select_atoms("resid 179:185 and (backbone or name CB)").center_of_geometry()
-	  B = u.select_atoms("resid 115:125 and (backbone or name CB)").center_of_geometry()
-	  A = u.select_atoms("resid 125:153 and (backbone or name CB)").center_of_geometry()
+	  C = u.select_atoms("resid 179-185 and (backbone or name CB)").center_of_geometry()
+	  B = u.select_atoms("resid 115-125 and (backbone or name CB)").center_of_geometry()
+	  A = u.select_atoms("resid 125-153 and (backbone or name CB)").center_of_geometry()
 	  BA = A - B
 	  BC = C - B
 	  theta = np.arccos(np.dot(BA, BC)/(norm(BA)*norm(BC)))
@@ -149,13 +162,13 @@ Bells and whistles
 
 .. rubric:: Quick data acquisition
 
-Especially useful for interactive analysis in :program:`ipython
---pylab` using list comprehensions (implicit for loops)::
+Especially useful for interactive analysis in :program:`ipython` using
+list comprehensions (implicit for loops)::
 
   protein = u.select_atoms("protein")
   data = np.array([(u.trajectory.time, protein.radius_of_gyration()) for ts in u.trajectory])
   time, RG = data.T
-  plot(time, RG)  
+  plt.plot(time, RG)  
 
 .. rubric:: More on the trajectory iterator
 

@@ -24,7 +24,7 @@ between first and last frame is ::
     >>> A = bb.positions  # coordinates of first frame
     >>> u.trajectory[-1]      # forward to last frame
     >>> B = bb.positions  # coordinates of last frame
-    >>> MDAnalysis.analysis.rms.rmsd(A,B)
+    >>> MDAnalysis.analysis.rms.rmsd(A, B)
     6.8342494129169804
 
 
@@ -49,9 +49,9 @@ In the simplest case, we can simply calculate the C-alpha RMSD between
 two structures, using :func:`~MDAnalysis.analysis.rms.rmsd`::
 
    >>> ref = MDAnalysis.Universe(PDB_small)
-   >>> mobile = MDAnalysis.Universe(PSF,DCD)
+   >>> mobile = MDAnalysis.Universe(PSF, DCD)
    >>> rms.rmsd(mobile.atoms.CA.positions, ref.atoms.CA.positions)
-   18.858259026820352
+   28.20178579474479
 
 Note that in this example translations have not been removed. In order
 to look at the pure rotation one needs to superimpose the centres of
@@ -60,7 +60,7 @@ mass (or geometry) first:
    >>> ref0 =  ref.atoms.CA.positions - ref.atoms.CA.center_of_mass()
    >>> mobile0 =  mobile.atoms.CA.positions - mobile.atoms.CA.center_of_mass()
    >>> rms.rmsd(mobile0, ref0)
-    6.8093965864717951
+   21.892591663632704
 
 The rotation matrix that superimposes *mobile* on *ref* while
 minimizing the CA-RMSD is obtained with the
@@ -68,11 +68,11 @@ minimizing the CA-RMSD is obtained with the
 
    >>> R, rmsd = align.rotation_matrix(mobile0, ref0)
    >>> print rmsd
-   6.8093965864717951
+   6.80939658647
    >>> print R
    [[ 0.14514539 -0.27259113  0.95111876]
     [ 0.88652593  0.46267112 -0.00268642]
-    [-0.43932289  0.84358136  0.30881368]]
+    [-0.43932289  0.84358136  0.30881368]]   
 
 Putting all this together one can superimpose all of *mobile* onto *ref*::
 
@@ -86,15 +86,15 @@ Putting all this together one can superimpose all of *mobile* onto *ref*::
 Exercise 5
 ==========
 
-Use the above in order to investigate how rigid the :ref:`CORE, NMP,
-and LID domains <AdK-domains>` are during the transition: Compute time
-series of the CA RMSD of each domain relative to its own starting
-structure, when superimposed on the starting structure.
+Investigate how rigid the :ref:`CORE, NMP, and LID domains
+<AdK-domains>` are during the transition: Compute time series of the
+CA RMSD of each domain relative to its own starting structure, when
+superimposed on the starting structure.
 
 *  You will need to make a copy of the starting *reference*
    coordinates that are needed for the shifts, e.g. ::
 
-     NMP = u.select_atoms("resid 30:59")
+     NMP = u.select_atoms("resid 30-59")
      u.trajectory[0]   # make sure to be on initial frame
      ref_com = NMP.select_atoms("name CA").center_of_mass()
      ref0 = NMP.positions - ref_com
@@ -102,9 +102,9 @@ structure, when superimposed on the starting structure.
    which is then used instead of ``ref.atoms.CA.center_of_mass()``
    (which would *change* for each time step).
 
-* I suggest writing a function that does the superposition for a given
-  time step, reference, and mobile :class:`AtomGroup` to make the code
-  more manageable (or use :func:`MDAnalysis.analysis.align.alignto`)
+* You can use the function :func:`MDAnalysis.analysis.rms.rmsd` (with
+  the keywords `center=True, superposition=True`) to superimpose each
+  atom group of interest and to calculate the RMSD.
 
 .. rubric:: Possible solution
 
@@ -112,17 +112,10 @@ structure, when superimposed on the starting structure.
    :width: 50%
    :align: center
 
-The code contains a function :func:`superpose` and :func:`rmsd`. The
-latter is marginally faster because we only need the calculated RMSD
-and not the full rotation matrix. (We are calling the lower-level
-function :func:`MDAnalysis.core.qcprot.CalcRMSDRotationalMatrix`
-directly, which has somewhat non-intuitive calling
-conventions). :func:`superpose` also does the superposition of the
-mobile group to the references (but
-:func:`~MDAnalysis.analysis.align.alignto` is actually a more flexible
-tool for doing this). Otherwise it is mostly book-keeping, which is
-solved by organizing everything in dictionaries with keys "CORE",
-"NMP", "LID".
+The code uses :func:`MDAnalysis.analysis.rms.rmsd` for the RMSD
+calculations after fitting each domain. Otherwise it is mostly
+book-keeping, which is solved by organizing everything in dictionaries
+with keys "CORE", "NMP", "LID".
 
 .. literalinclude:: /code/domrigid.py
    :linenos:
@@ -133,4 +126,11 @@ solved by organizing everything in dictionaries with keys "CORE",
 .. _example scripts:
    https://github.com/MDAnalysis/mdanalysis/tree/develop/package/examples
 
+.. SeeAlso::
+
+   :func:`MDAnalysis.analysis.align.alignto` for superimposing
+   structures
+
+   :class:`MDAnalysis.analysis.rms.RMSD` for comprehensive analysis of
+   RMSD time series
 

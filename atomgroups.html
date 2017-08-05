@@ -116,7 +116,7 @@ known as the principal moments of inertia, and <span class="math">\(I =
 <li><p class="first">Calculate the center of mass and the center of geometry for each of
 the three domains.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span> <span class="o">=</span> <span class="p">{</span>
-<span class="gp">&gt;&gt;&gt; </span>  <span class="s1">&#39;CORE&#39;</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein and (resid 1-29 or resid 60-121 or resid 160-214)&quot;</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="s1">&#39;CORE&#39;</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein and (resid 1-29 60-121 160-214)&quot;</span><span class="p">),</span>
 <span class="gp">&gt;&gt;&gt; </span>  <span class="s1">&#39;NMP&#39;</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein and resid 30-59&quot;</span><span class="p">),</span>
 <span class="gp">&gt;&gt;&gt; </span>  <span class="s1">&#39;LID&#39;</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein and resid 122-159&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>  <span class="p">}</span>
@@ -181,7 +181,7 @@ as an argument and computes <span class="math">\(\theta_\text{NMP}\)</span>:</p>
 <dt id="theta_NMP">
 <code class="descname">theta_NMP</code><span class="sig-paren">(</span><em>u</em><span class="sig-paren">)</span><a class="headerlink" href="#theta_NMP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the NMP-CORE angle for E. coli AdK in degrees from
-<code class="xref py py-class docutils literal"><span class="pre">Universe</span></code> <em>u</em></p>
+<a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/universe.html#MDAnalysis.core.universe.Universe" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">Universe</span></code></a> <em>u</em></p>
 </dd></dl>
 
 <p>Use the following <em>incomplete</em> code as a starting point:</p>
@@ -190,7 +190,7 @@ as an argument and computes <span class="math">\(\theta_\text{NMP}\)</span>:</p>
 
 <span class="k">def</span> <span class="nf">theta_NMP</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;Calculate the NMP-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
-   <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115:125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+   <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115-125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
    <span class="n">B</span> <span class="o">=</span>
    <span class="n">C</span> <span class="o">=</span>
    <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
@@ -244,9 +244,9 @@ the file with <code class="code docutils literal"><span class="pre">%run</span> 
 
 <span class="k">def</span> <span class="nf">theta_NMP</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the NMP-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115:125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 90:100 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 35:55 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115-125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 90-100 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 35-55 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">BC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">BA</span><span class="p">,</span> <span class="n">BC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">BC</span><span class="p">)))</span>
@@ -254,9 +254,9 @@ the file with <code class="code docutils literal"><span class="pre">%run</span> 
 
 <span class="k">def</span> <span class="nf">theta_LID</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the LID-CORE angle for E. coli AdK in degrees&quot;&quot;&quot;</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 179:185 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115:125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 125:153 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 179-185 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 115-125 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 125-153 and (backbone or name CB)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center_of_geometry</span><span class="p">()</span>
     <span class="n">BA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">BC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">-</span> <span class="n">B</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">BA</span><span class="p">,</span> <span class="n">BC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">BC</span><span class="p">)))</span>
@@ -270,7 +270,7 @@ the file with <code class="code docutils literal"><span class="pre">%run</span> 
 <p>You can directly write a <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.AtomGroup" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a>
 to a file with the <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.AtomGroup.write" title="(in MDAnalysis v0.16)"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a>
 method:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORE</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 1:29 or resid 60:121 or resid 160:214&quot;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORE</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;resid 1-29 60-121 160-214&quot;</span><span class="p">)</span>
 <span class="n">CORE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;AdK_CORE.pdb&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -283,8 +283,9 @@ hydration shell around a protein to a file</p>
 <p>for further analysis or visualization.</p>
 <p>You can also write <a class="reference external" href="http://www.gromacs.org">Gromacs</a> index files (in case you don&#8217;t like
 <strong class="program">make_ndx</strong>...) with the
-<code class="xref py py-meth docutils literal"><span class="pre">write_selection()</span></code> method:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORE</span><span class="o">.</span><span class="n">write_selection</span><span class="p">(</span><span class="s2">&quot;CORE.ndx&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CORE&quot;</span><span class="p">)</span>
+<a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.AtomGroup.write" title="(in MDAnalysis v0.16)"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a> method when selecting
+a format for an index file (see the supported <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections_modules.html#id2">index file formats</a>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;CORE.ndx&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CORE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -292,7 +293,7 @@ hydration shell around a protein to a file</p>
 <p>The lists of supported</p>
 <ul class="last simple">
 <li><a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/coordinates/init.html#id1">coordinate file formats</a></li>
-<li><a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections_modules.html#selection-exporters">selection formats</a></li>
+<li><a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections_modules.html#id2">index file formats</a></li>
 </ul>
 </div>
 </div>
@@ -326,7 +327,12 @@ hydration shell around a protein to a file</p>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with AtomGroups</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with AtomGroups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#important-methods-and-attributes-of-atomgroup">Important methods and attributes of AtomGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises-3">Exercises 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing-atomgroups">Processing AtomGroups</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>

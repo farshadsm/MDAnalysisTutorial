@@ -47,25 +47,38 @@
             
   <div class="section" id="how-to-use-this-tutorial">
 <h1>How to use this tutorial<a class="headerlink" href="#how-to-use-this-tutorial" title="Permalink to this headline">¶</a></h1>
-<p>If you have not installed <a class="reference external" href="http://mdanalysis.org">MDAnalysis</a> yet, start with
-<a class="reference internal" href="installation.html#chapter-installing-mdanalysis"><span class="std std-ref">Installing MDAnalysis</span></a>.</p>
-<p>If you already have a working installation, i.e., you can successfully
-do</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MDAnalysis</span>
-<span class="kn">from</span> <span class="nn">MDAnalysis.tests.datafiles</span> <span class="k">import</span> <span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span>
-</pre></div>
-</div>
-<p>then you can immediately read about the initial
-<a class="reference internal" href="preparations.html#chapter-preparations"><span class="std std-ref">Preparations</span></a>.</p>
+<p>We will first determine <a class="reference internal" href="#have-you-installed-mdanalysis"><span class="std std-ref">if you need to install MDAnalysis</span></a>.</p>
 <p>After that, the tutorial is designed to be read and worked through by
 yourself at your own pace. It contains short examples that introduce
 important features and ideas. You should run all these examples and
-code snippets yourself. <em>Exercises</em> (with solutions) are included. You
-can</p>
+code snippets yourself. <em>Exercises</em> (with solutions) are
+included. Follow tutorial online in your browser, starting with the
+chapter <a class="reference internal" href="basics.html#chapter-basics"><span class="std std-ref">Basics</span></a>.</p>
+<div class="section" id="have-you-installed-mdanalysis">
+<span id="id1"></span><h2>Have you installed MDAnalysis?<a class="headerlink" href="#have-you-installed-mdanalysis" title="Permalink to this headline">¶</a></h2>
+<p>Test if you can successfully import MDAnalysis: on the command line
+start the <code class="docutils literal"><span class="pre">python</span></code> program</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python
+</pre></div>
+</div>
+<p>and type</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MDAnalysis</span>
+<span class="kn">from</span> <span class="nn">MDAnalysis.tests.datafiles</span> <span class="k">import</span> <span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">MDAnalysis</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MDAnalysis</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do you see <code class="docutils literal"><span class="pre">&lt;Universe</span> <span class="pre">with</span> <span class="pre">3341</span> <span class="pre">atoms&gt;</span></code> and does the last command
+print 0.16.2 or higher?</p>
 <ul class="simple">
-<li>follow the tutorial online in your browser, starting with the
-chapter <a class="reference internal" href="basics.html#chapter-basics"><span class="std std-ref">Basics</span></a>, or</li>
+<li><strong>NO, I need to install MDAnalysis</strong>: If you have not installed
+MDAnalysis yet or if you need to upgrade, start with
+<a class="reference internal" href="installation.html#chapter-installing-mdanalysis"><span class="std std-ref">Installing MDAnalysis</span></a>.</li>
+<li><strong>YES, I have the latest version installed</strong>: You can immediately
+read about the initial <a class="reference internal" href="preparations.html#chapter-preparations"><span class="std std-ref">Preparations</span></a>.</li>
 </ul>
+</div>
 </div>
 
 
@@ -92,7 +105,10 @@ chapter <a class="reference internal" href="basics.html#chapter-basics"><span cl
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to use this tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to use this tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#have-you-installed-mdanalysis">Have you installed MDAnalysis?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>

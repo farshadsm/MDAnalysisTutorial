@@ -11,8 +11,8 @@ simple PDB or GRO file) and *trajectory* writers (e.g. XTC, DCD, but
 also multi-frame PDB files).
 
 .. _`Table of supported coordinate formats`:
-   https://pythonhosted.org/MDAnalysis/documentation_pages/coordinates/init.html#id1
-
+   http://docs.mdanalysis.org/documentation_pages/coordinates/init.html#id1
+   
 .. _writing-single-frames:
 
 Single frames
@@ -25,13 +25,16 @@ single frame is to use the
 :ref:`processing-atomgroups`. For instance, to only write out the
 protein without solvent to a file in GRO format::
 
+   from MDAnalysis.tests.datafiles import PDB
+  
    u = MDAnalysis.Universe(PDB)
    protein = u.select_atoms("protein")
    protein.write("protein.gro")
 
 MDAnalysis uses the file suffix to determine the output file format
 (unless the *format* keyword is specified) and will raise an exception
-if it is not suitable for single frame writing.
+if it is not suitable for single frame writing (see the `Table of
+supported coordinate formats`_ for details).
 
 
 .. _writing-trajectories:
@@ -87,17 +90,16 @@ field of a PDB file and then color atoms by B-factor (also known as
 temperature factor or just "beta").
 
 The following example computes the shift of each atom in AdK relative
-to a reference structure (line 23). We take as reference the closed
+to a reference structure (line 29). We take as reference the closed
 conformation (after a structural superposition on the CORE domain with
 :func:`~MDAnalysis.analysis.align.alignto`). The shifts are written
-into the B-factor with the
-:meth:`~MDAnalysis.core.groups.AtomGroup.set_bfactor` method of
-:class:`~MDAnalysis.core.groups.AtomGroup`. Each frame is written
-out as part of a multi-frame PDB file:
+into the :attr:`AtomGroup.tempfactors` ("B-factor") array of
+the :class:`AtomGroup` [#addattribute]_. Each frame is written out as part of a
+multi-frame PDB file:
 
 .. literalinclude:: /code/bfacmovie.py
    :linenos:
-   :emphasize-lines: 22,23,25,26
+   :emphasize-lines: 19,28,29,31,32
 
 To visualize in VMD_, use the :ref:`pdbbfactor Tcl script <pdbbfactor-tcl-script>` below on
 the VMD Tcl commandline:
@@ -143,3 +145,27 @@ slightly modified for this tutorial:
 .. _`vmduser.py`: 
    https://github.com/MDAnalysis/MDAnalysisTutorial/blob/master/doc/sphinx/code/vmduser.py
 
+.. rubric:: Footnotes
+
+.. [#addattribute] The :attr:`AtomGroup.tempfactors` attribute only
+		   exists when a structure is read from a PDB
+		   file. Here we load a structure from a PSF topology
+		   file which does not define
+		   :attr:`tempfactors`. Therefore, we first have to
+		   manually add it with the line ::
+
+		     u.add_TopologyAttr(MDAnalysis.core.topologyattrs.Tempfactors(np.zeros(len(u.atoms))))
+
+		   It initializes :attr:`u.atoms.tempfactors`
+		   to be zero for all atoms. We can then later fill
+		   the :attr:`u.atoms.tempfactors` array with
+		   arbitrary values.
+
+		   Starting with MDAnalysis 0.17.0, the explicit
+		   adding of commonly used topology attributes will
+		   not be necessary any more (see Issue `#1359`_).
+
+.. _`#1359`: https://github.com/MDAnalysis/mdanalysis/issues/1359		   
+
+		   
+		   
