@@ -106,6 +106,7 @@ Exercise 1
    :class:`~MDAnalysis.core.groups.AtomGroup.Universe` ``u``? ::
 
      >>> len(u.atoms.residues)
+     214
      >>> u.atoms.n_residues
      214
 
@@ -130,7 +131,9 @@ Exercise 1
 4. How many segments are there?  ::
 
      >>> len(u.segments)
+     1
      >>> len(u.atoms.segments)
+     1
      >>> u.atoms.n_segments
      1
 
@@ -138,7 +141,7 @@ Exercise 1
    :class:`~MDAnalysis.core.groups.Segment`? ::
 
      >>> s1 = u.segments[0]
-     >>> s1.id
+     >>> s1.segid
      '4AKE'
    
 

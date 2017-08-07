@@ -140,6 +140,7 @@ slice of atoms.</p>
 <li><p class="first">How many residues are in the
 <code class="xref py py-class docutils literal"><span class="pre">Universe</span></code> <code class="docutils literal"><span class="pre">u</span></code>?</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">residues</span><span class="p">)</span>
+<span class="go">214</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">n_residues</span>
 <span class="go">214</span>
 </pre></div>
@@ -164,7 +165,9 @@ object interactively with <code class="kbd docutils literal"><span class="pre">T
 </li>
 <li><p class="first">How many segments are there?</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">segments</span><span class="p">)</span>
+<span class="go">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">segments</span><span class="p">)</span>
+<span class="go">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">atoms</span><span class="o">.</span><span class="n">n_segments</span>
 <span class="go">1</span>
 </pre></div>
@@ -172,7 +175,7 @@ object interactively with <code class="kbd docutils literal"><span class="pre">T
 <p>What is the segment identifier of the first
 <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.Segment" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">Segment</span></code></a>?</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span><span class="o">.</span><span class="n">id</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span><span class="o">.</span><span class="n">segid</span>
 <span class="go">&#39;4AKE&#39;</span>
 </pre></div>
 </div>
