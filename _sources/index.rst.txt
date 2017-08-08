@@ -51,6 +51,7 @@ Begin the tutorial with :doc:`howto` and use the *sidebar* for navigation.
 
 .. toctree::
    :maxdepth: 2
+   :numbered:	      
    :hidden:	      
 
    howto

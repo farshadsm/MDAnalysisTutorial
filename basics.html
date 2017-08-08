@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Basics &#8212; MDAnalysis Tutorial 2.0.0 documentation</title>
+    <title>4. Basics &#8212; MDAnalysis Tutorial 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working with AtomGroups" href="atomgroups.html" />
-    <link rel="prev" title="Preparations" href="preparations.html" />
+    <link rel="next" title="5. Working with AtomGroups" href="atomgroups.html" />
+    <link rel="prev" title="3. Preparations" href="preparations.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -46,13 +46,13 @@
           <div class="body" role="main">
             
   <div class="section" id="basics">
-<span id="chapter-basics"></span><h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
+<span id="chapter-basics"></span><h1>4. Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
 <p>We discuss the fundamental objects in MDAnalysis, the
 <a class="reference internal" href="#universe-and-atomgroup"><span class="std std-ref">Universe and AtomGroup</span></a>, and the facilities for
 <a class="reference internal" href="#selections"><span class="std std-ref">Selections</span></a> of atoms. These selections themselves are again an
 <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.AtomGroup" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">AtomGroup</span></code></a>.</p>
 <div class="section" id="universe-and-atomgroup">
-<span id="id1"></span><h2>Universe and AtomGroup<a class="headerlink" href="#universe-and-atomgroup" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>4.1. Universe and AtomGroup<a class="headerlink" href="#universe-and-atomgroup" title="Permalink to this headline">¶</a></h2>
 <p>MDAnalysis is <strong>object oriented</strong>. Molecular systems consist of
 <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.Atom" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">Atom</span></code></a> objects (instances of the
 class <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.Atom" title="(in MDAnalysis v0.16)"><code class="xref py py-class docutils literal"><span class="pre">MDAnalysis.core.groups.Atom</span></code></a>), which are grouped in
@@ -119,7 +119,7 @@ example, to list the atoms of the
 </pre></div>
 </div>
 <div class="section" id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.1. Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">What residue (&#8220;resname&#8221;) does the last atom belong to in the above
 example?</p>
@@ -196,7 +196,7 @@ object interactively with <code class="kbd docutils literal"><span class="pre">T
 </div>
 </div>
 <div class="section" id="selections">
-<span id="id2"></span><h2>Selections<a class="headerlink" href="#selections" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>4.2. Selections<a class="headerlink" href="#selections" title="Permalink to this headline">¶</a></h2>
 <p>MDAnalysis comes with a fairly complete <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/selections.html">atom selection</a>
 facility. Primarily, one uses the method
 <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/universe.html#MDAnalysis.core.universe.Universe.select_atoms" title="(in MDAnalysis v0.16)"><code class="xref py py-meth docutils literal"><span class="pre">select_atoms()</span></code></a> of a
@@ -265,7 +265,7 @@ syntax</p>
 <p>This selection will find atoms potentially involved in salt bridges
 between acidic and basic residues.</p>
 <div class="section" id="exercises-2">
-<h3>Exercises 2<a class="headerlink" href="#exercises-2" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.1. Exercises 2<a class="headerlink" href="#exercises-2" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">Select the range of resids 100 to 200 (&#8220;100-200&#8221;) with a
 selection. Compare the result to what you get by slicing the
@@ -347,19 +347,19 @@ is <em>excluded</em>.</td></tr>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#universe-and-atomgroup">Universe and AtomGroup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#selections">Selections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">1. How to use this tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installing MDAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preparations.html">3. Preparations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#universe-and-atomgroup">4.1. Universe and AtomGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selections">4.2. Selections</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">5. Working with AtomGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectories.html">6. Trajectory analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing.html">7. Writing coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">8. Using the MDAnalysis.analysis modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">9. References</a></li>
 </ul>
 
 
@@ -383,8 +383,8 @@ is <em>excluded</em>.</td></tr>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="preparations.html" title="previous chapter">Preparations</a></li>
-      <li>Next: <a href="atomgroups.html" title="next chapter">Working with AtomGroups</a></li>
+      <li>Previous: <a href="preparations.html" title="previous chapter">3. Preparations</a></li>
+      <li>Next: <a href="atomgroups.html" title="next chapter">5. Working with AtomGroups</a></li>
   </ul></li>
 </ul>
 </div>

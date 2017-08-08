@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Using the MDAnalysis.analysis modules &#8212; MDAnalysis Tutorial 2.0.0 documentation</title>
+    <title>8. Using the MDAnalysis.analysis modules &#8212; MDAnalysis Tutorial 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="References" href="references.html" />
-    <link rel="prev" title="Writing coordinates" href="writing.html" />
+    <link rel="next" title="9. References" href="references.html" />
+    <link rel="prev" title="7. Writing coordinates" href="writing.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -46,12 +46,12 @@
           <div class="body" role="main">
             
   <div class="section" id="using-the-mdanalysis-analysis-modules">
-<h1>Using the MDAnalysis.analysis modules<a class="headerlink" href="#using-the-mdanalysis-analysis-modules" title="Permalink to this headline">¶</a></h1>
+<h1>8. Using the MDAnalysis.analysis modules<a class="headerlink" href="#using-the-mdanalysis-analysis-modules" title="Permalink to this headline">¶</a></h1>
 <p>MDAnalysis comes with a number of existing analysis code in the
 <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/analysis_modules.html">MDAnalysis.analysis</a> module and <a class="reference external" href="https://github.com/MDAnalysis/mdanalysis/tree/develop/package/examples">example scripts</a> (see also the
 <a class="reference external" href="http://wiki.mdanalysis.org/Examples">Examples</a> on the MDAnalysis wiki).</p>
 <div class="section" id="rmsd">
-<h2>RMSD<a class="headerlink" href="#rmsd" title="Permalink to this headline">¶</a></h2>
+<h2>8.1. RMSD<a class="headerlink" href="#rmsd" title="Permalink to this headline">¶</a></h2>
 <p>As an example we will use the <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/analysis/rms.html#MDAnalysis.analysis.rms.rmsd" title="(in MDAnalysis v0.16)"><code class="xref py py-func docutils literal"><span class="pre">MDAnalysis.analysis.rms.rmsd()</span></code></a>
 function from the <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/analysis/rms.html#module-MDAnalysis.analysis.rms" title="(in MDAnalysis v0.16)"><code class="xref py py-mod docutils literal"><span class="pre">MDAnalysis.analysis.rms</span></code></a> module. It computes
 the coordinate root mean square distance between two sets of
@@ -69,7 +69,7 @@ between first and last frame is</p>
 </div>
 </div>
 <div class="section" id="superposition-of-structure">
-<h2>Superposition of structure<a class="headerlink" href="#superposition-of-structure" title="Permalink to this headline">¶</a></h2>
+<h2>8.2. Superposition of structure<a class="headerlink" href="#superposition-of-structure" title="Permalink to this headline">¶</a></h2>
 <p>In order to superimpose two structures in a way that minimizes the
 RMSD we have functions in the <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/analysis/align.html#module-MDAnalysis.analysis.align" title="(in MDAnalysis v0.16)"><code class="xref py py-mod docutils literal"><span class="pre">MDAnalysis.analysis.align</span></code></a> module.</p>
 <p>The example uses files provided as part of the MDAnalysis test suite
@@ -120,7 +120,7 @@ minimizing the CA-RMSD is obtained with the
 </div>
 </div>
 <div class="section" id="exercise-5">
-<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<h2>8.3. Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
 <p>Investigate how rigid the <a class="reference internal" href="atomgroups.html#adk-domains"><span class="std std-ref">CORE, NMP, and LID domains</span></a> are during the transition: Compute time series of the
 CA RMSD of each domain relative to its own starting structure, when
 superimposed on the starting structure.</p>
@@ -275,20 +275,20 @@ RMSD time series</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="writing.html">Writing coordinates</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the MDAnalysis.analysis modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#rmsd">RMSD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#superposition-of-structure">Superposition of structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercise-5">Exercise 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">1. How to use this tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installing MDAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preparations.html">3. Preparations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">4. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">5. Working with AtomGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectories.html">6. Trajectory analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing.html">7. Writing coordinates</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Using the MDAnalysis.analysis modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rmsd">8.1. RMSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#superposition-of-structure">8.2. Superposition of structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-5">8.3. Exercise 5</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">9. References</a></li>
 </ul>
 
 
@@ -312,8 +312,8 @@ RMSD time series</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="writing.html" title="previous chapter">Writing coordinates</a></li>
-      <li>Next: <a href="references.html" title="next chapter">References</a></li>
+      <li>Previous: <a href="writing.html" title="previous chapter">7. Writing coordinates</a></li>
+      <li>Next: <a href="references.html" title="next chapter">9. References</a></li>
   </ul></li>
 </ul>
 </div>

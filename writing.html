@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Writing coordinates &#8212; MDAnalysis Tutorial 2.0.0 documentation</title>
+    <title>7. Writing coordinates &#8212; MDAnalysis Tutorial 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="_static/mdanalysis-logo.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using the MDAnalysis.analysis modules" href="analysismodule.html" />
-    <link rel="prev" title="Trajectory analysis" href="trajectories.html" />
+    <link rel="next" title="8. Using the MDAnalysis.analysis modules" href="analysismodule.html" />
+    <link rel="prev" title="6. Trajectory analysis" href="trajectories.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -46,14 +46,14 @@
           <div class="body" role="main">
             
   <div class="section" id="writing-coordinates">
-<h1>Writing coordinates<a class="headerlink" href="#writing-coordinates" title="Permalink to this headline">¶</a></h1>
+<h1>7. Writing coordinates<a class="headerlink" href="#writing-coordinates" title="Permalink to this headline">¶</a></h1>
 <p>MDAnalysis also supports writing of data in a range of file formats
 (see the <a class="reference external" href="http://docs.mdanalysis.org/documentation_pages/coordinates/init.html#id1">Table of supported coordinate formats</a> for
 details). MDAnalysis supports both <em>single frame</em> writers (such as a
 simple PDB or GRO file) and <em>trajectory</em> writers (e.g. XTC, DCD, but
 also multi-frame PDB files).</p>
 <div class="section" id="single-frames">
-<span id="writing-single-frames"></span><h2>Single frames<a class="headerlink" href="#single-frames" title="Permalink to this headline">¶</a></h2>
+<span id="writing-single-frames"></span><h2>7.1. Single frames<a class="headerlink" href="#single-frames" title="Permalink to this headline">¶</a></h2>
 <p>The most straightforward way to write to a file that can only hold a
 single frame is to use the
 <a class="reference external" href="http://www.mdanalysis.org/docs/documentation_pages/core/groups.html#MDAnalysis.core.groups.AtomGroup.write" title="(in MDAnalysis v0.16)"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a> method of any
@@ -73,7 +73,7 @@ if it is not suitable for single frame writing (see the <a class="reference exte
 supported coordinate formats</a> for details).</p>
 </div>
 <div class="section" id="trajectories">
-<span id="writing-trajectories"></span><h2>Trajectories<a class="headerlink" href="#trajectories" title="Permalink to this headline">¶</a></h2>
+<span id="writing-trajectories"></span><h2>7.2. Trajectories<a class="headerlink" href="#trajectories" title="Permalink to this headline">¶</a></h2>
 <p>The typical use pattern is to</p>
 <ol class="arabic simple">
 <li>Get a trajectory writer with <code class="xref py py-func docutils literal"><span class="pre">MDAnalysis.Writer()</span></code> (which is
@@ -87,7 +87,7 @@ recommended to simply use the writer with the <a class="reference external" href
 statement and have the context manager close the file automatically).</li>
 </ol>
 <div class="section" id="example-protein-only-trajectory">
-<h3>Example: Protein-only trajectory<a class="headerlink" href="#example-protein-only-trajectory" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.1. Example: Protein-only trajectory<a class="headerlink" href="#example-protein-only-trajectory" title="Permalink to this headline">¶</a></h3>
 <p>In practice, the second step is typically repeated in a loop as in the
 example below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">MDAnalysis</span>
@@ -111,7 +111,7 @@ file also has to be stored, as in the example under
 <a class="reference internal" href="#writing-single-frames"><span class="std std-ref">Single frames</span></a>.</p>
 </div>
 <div class="section" id="example-saving-dynamic-per-atom-properties-in-b-factor">
-<h3>Example: Saving dynamic per-atom properties in B-factor<a class="headerlink" href="#example-saving-dynamic-per-atom-properties-in-b-factor" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.2. Example: Saving dynamic per-atom properties in B-factor<a class="headerlink" href="#example-saving-dynamic-per-atom-properties-in-b-factor" title="Permalink to this headline">¶</a></h3>
 <p>It is often very useful to project per-atom properties on the
 structure. A common approach is to save scalar values in the B-factor
 field of a PDB file and then color atoms by B-factor (also known as
@@ -359,19 +359,19 @@ not be necessary any more (see Issue <a class="reference external" href="https:/
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="howto.html">How to use this tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing MDAnalysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preparations.html">Preparations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">Working with AtomGroups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trajectories.html">Trajectory analysis</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing coordinates</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#single-frames">Single frames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#trajectories">Trajectories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">1. How to use this tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installing MDAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preparations.html">3. Preparations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">4. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomgroups.html">5. Working with AtomGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectories.html">6. Trajectory analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Writing coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#single-frames">7.1. Single frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trajectories">7.2. Trajectories</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">Using the MDAnalysis.analysis modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysismodule.html">8. Using the MDAnalysis.analysis modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">9. References</a></li>
 </ul>
 
 
@@ -395,8 +395,8 @@ not be necessary any more (see Issue <a class="reference external" href="https:/
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="trajectories.html" title="previous chapter">Trajectory analysis</a></li>
-      <li>Next: <a href="analysismodule.html" title="next chapter">Using the MDAnalysis.analysis modules</a></li>
+      <li>Previous: <a href="trajectories.html" title="previous chapter">6. Trajectory analysis</a></li>
+      <li>Next: <a href="analysismodule.html" title="next chapter">8. Using the MDAnalysis.analysis modules</a></li>
   </ul></li>
 </ul>
 </div>
